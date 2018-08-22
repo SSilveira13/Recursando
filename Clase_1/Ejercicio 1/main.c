@@ -5,11 +5,11 @@
 int main()
 {
     int numeroUno,numeroDos,numeroTres,numeroMedio = 0;
-    printf("\nNumero uno: ");
+    printf("Numero uno: ");
     scanf("%d",&numeroUno);
-    printf("\nNumero dos: ");
+    printf("Numero dos: ");
     scanf("%d",&numeroDos);
-    printf("\nNumero tres: ");
+    printf("Numero tres: ");
     scanf("%d",&numeroTres);
     /*if(numeroUno < numeroDos)
     {
