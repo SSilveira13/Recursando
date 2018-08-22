@@ -4,15 +4,14 @@
 
 int main()
 {
-    int numeroUno,numeroDos,numeroTres,numeroMedio = 0;
-    printf("Ingrese 3 numeros:");
-    printf("\n\nNumero uno: ");
+    int numeroUno,numeroDos,numeroTres,numeroMedio;
+    printf("\nNumero uno: ");
     scanf("%d",&numeroUno);
     printf("\nNumero dos: ");
     scanf("%d",&numeroDos);
     printf("\nNumero tres: ");
     scanf("%d",&numeroTres);
-    if(numeroUno < numeroDos)
+    /*if(numeroUno < numeroDos)
     {
         if(numeroDos < numeroTres)
         {
@@ -33,14 +32,52 @@ int main()
         {
             numeroMedio = numeroTres;
         }
-    }
-    if(numeroMedio != 0)
+    }*/
+    /*if((numeroUno < numeroDos) && (numeroDos< numeroTres) || (numeroTres < numeroDos) && (numeroDos < numeroUno))
     {
-        printf("\nEl numero del medio es: %d",numeroMedio);
+        numeroMedio = numeroDos;
+    }
+    else if((numeroDos < numeroUno) && (numeroUno < numeroTres) || (numeroTres < numeroUno) && (numeroUno < numeroDos))
+    {
+        numeroMedio = numeroUno;
+    }
+    else if((numeroUno < numeroTres) && (numeroTres < numeroDos) || (numeroDos < numeroTres) && (numeroTres < numeroUno))
+    {
+        numeroMedio = numeroTres;
+    }*/
+    int numeroMinimo = numeroUno,numeroMaximo = numeroUno;
+    if(numeroDos < numeroMinimo)
+    {
+        numeroMinimo = numeroDos;
+    }
+    if(numeroTres < numeroMinimo)
+    {
+        numeroMinimo = numeroTres;
+    }
+    if(numeroDos > numeroMaximo)
+    {
+        numeroMaximo = numeroDos;
+    }
+    if(numeroTres > numeroMaximo)
+    {
+        numeroMaximo = numeroTres;
+    }
+    if((numeroMinimo < numeroUno) && (numeroUno < numeroMaximo))
+    {
+        numeroMedio = numeroUno;
+    }
+    else if((numeroMinimo < numeroDos) && (numeroDos < numeroMaximo))
+    {
+        numeroMedio = numeroDos;
+    }
+    else if((numeroMinimo < numeroTres) && (numeroTres < numeroMaximo))
+    {
+        numeroMedio = numeroTres;
     }
     else
     {
         printf("\nError");
     }
+    printf("\nEl numero del medio es: %d",numeroMedio);
     return 0;
 }
