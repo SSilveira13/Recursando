@@ -4,7 +4,7 @@
 
 int main()
 {
-    int numeroUno,numeroDos,numeroTres,numeroMedio;
+    int numeroUno,numeroDos,numeroTres,numeroMedio = 0;
     printf("\nNumero uno: ");
     scanf("%d",&numeroUno);
     printf("\nNumero dos: ");
@@ -74,10 +74,13 @@ int main()
     {
         numeroMedio = numeroTres;
     }
+    if(numeroMedio != 0)
+    {
+        printf("\nEl numero del medio es: %d",numeroMedio);
+    }
     else
     {
-        printf("\nError");
+        printf("\nNo hay numero del medio\n");
     }
-    printf("\nEl numero del medio es: %d",numeroMedio);
     return 0;
 }
