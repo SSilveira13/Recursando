@@ -41,12 +41,13 @@ int validarEdad(int* edad,int edadMax,int edadMin)
 {
     int respuesta = 0, iteracion;
     int* pEdad = edad;
-    *pEdad = pedirEdad();
     for(iteracion = 0;iteracion < 3;iteracion++)
     {
+        *pEdad = pedirEdad();
         if(*pEdad >= edadMin && *pEdad <= edadMax)
         {
             respuesta = 1;
+            break;
         }
     }
     return respuesta;
