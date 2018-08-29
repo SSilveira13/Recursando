@@ -11,9 +11,10 @@ int main()//el asterisco(*) se llama operador de indireccion
 {
     int edadValida = 0;
     int edad = 0;
-    int repetir = 1;
+    char repetir = 's';
     do
     {
+        system("cls");
         edadValida = validarEdad(&edad, MAX, MIN);
         if(edadValida)
         {
@@ -23,9 +24,10 @@ int main()//el asterisco(*) se llama operador de indireccion
         {
             printf("Error: la edad del usuario no es valida\n");
         }
-        printf("Desea reingresar la edad del usuario? <1/0>\n");
-        scanf("%d",&repetir);
-    }while(repetir == 1);
+        printf("Desea reingresar la edad del usuario? <s/n>\n");
+        fflush(stdin);
+        scanf("%c",&repetir);
+    }while(repetir == 's');
     return 0;
 }
 
@@ -52,6 +54,3 @@ int validarEdad(int* edad,int edadMax,int edadMin)
     }
     return respuesta;
 }
-
-//printf("La edad del usuario es %d\n",edad);
-//printf("Error: la edad del usuario no es valida\n");
