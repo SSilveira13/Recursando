@@ -134,6 +134,3 @@ int retornarCantidadEntreNotas(int listado[],int tamanio,int limiteInferior,int 
     }
     return cantidadEntreNotas;
 }
-//void mostrarAprobados(int listado[],int tamanio);//6-10
-//void mostrarAFinales(int listado[],int tamanio);//4-5
-//int mostrarDesaprobados(int listado[],int tamanio);//1-3
