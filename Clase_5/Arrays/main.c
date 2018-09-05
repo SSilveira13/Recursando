@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define CANTIDAD 5
-int retornoTotal(int array[],int cantidad);
+int retornoTotal(int listado[],int tamanio);
+int retornoPromedio(int listado[],int tamanio);
+void cargarListado(int listado[],int tamanio);
 int main()
 {
     int listaDeNotas[CANTIDAD];
-    int numeroIngresado;
     int i;
     int mayor,menor;
     int total = 0;
@@ -14,12 +15,7 @@ int main()
     printf("Tamaño: %d\n",sizeof(listaDeNotas));
     printf("Direccion: %d\n",&numeroIngresado);
     printf("Direccion: %d\n",listaDeNotas);*/
-    for(i=0;i<CANTIDAD;i++)
-    {
-        printf("\nIngrese nota n %d: ",i+1);
-        scanf("%d",&numeroIngresado);
-        listaDeNotas[i]=numeroIngresado;
-    }
+    cargarListado(listaDeNotas,CANTIDAD);
     for(i=0;i<CANTIDAD;i++)
     {
         printf("\nLa nota es: %d",listaDeNotas[i]);
@@ -38,8 +34,8 @@ int main()
             menor=listaDeNotas[i];
         }
     }
-    total=retornoTotal(listaDeNotas,CANTIDAD);
-    promedio = total / CANTIDAD;
+    total = retornoTotal(listaDeNotas,CANTIDAD);
+    promedio = retornoPromedio(listaDeNotas,CANTIDAD);
     printf("\nPromedio: %d",promedio);
     printf("\nEl total es: %d",total);
     printf("\nEl mayor es: %d",mayor);
@@ -47,12 +43,33 @@ int main()
     return 0;
 }
 
-int retornoTotal(int array[],int cantidad)
+int retornoTotal(int listado[],int tamanio)
 {
     int total = 0,i;
-    for(i=0;i<cantidad;i++)
+    for(i=0;i<tamanio;i++)
     {
-        total += array[i];
+        total += listado[i];
     }
     return total;
+}
+
+int retornoPromedio(int listado[],int tamanio)
+{
+    int suma;
+    int promedio;
+    suma = retornoTotal(listado,tamanio);
+    promedio = suma / tamanio;
+    return promedio;
+}
+
+void cargarListado(int listado[],int tamanio)
+{
+    int i;
+    int numeroIngresado;
+    for(i=0;i<tamanio;i++)
+    {
+        printf("\nIngrese nota n %d: ",i+1);
+        scanf("%d",&numeroIngresado);
+        listado[i]=numeroIngresado;
+    }
 }
