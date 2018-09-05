@@ -8,7 +8,8 @@ void mostrarListado(int listado[],int tamanio);
 void mostrarInformacionDelArray(int listado[],int tamanio);
 int retornoMayor(int listado[],int tamanio);
 int retornoMenor(int listado[],int tamanio);
-int retornoPares(int listado[],int tamanio);
+int retornoCantidadDePares(int listado[],int tamanio);
+int retornarCantidadEntreNotas(int listado[],int tamanio,int limiteInferior,int limiteSuperior);
 int main()
 {
     int listaDeNotas[CANTIDAD];
@@ -61,16 +62,25 @@ void mostrarInformacionDelArray(int listado[],int tamanio)
     int cantidadDePares;
     int total;
     int promedio;
+    int aprobados;
+    int aFinal;
+    int desaprobados;
     mayor = retornoMayor(listado,tamanio);
     menor = retornoMenor(listado,tamanio);
-    cantidadDePares = retornoPares(listado,tamanio);
+    cantidadDePares = retornoCantidadDePares(listado,tamanio);
     total = retornoTotal(listado,tamanio);
     promedio = retornoPromedio(listado,tamanio);
+    aprobados = retornarCantidadEntreNotas(listado,tamanio,6,10);
+    aFinal = retornarCantidadEntreNotas(listado,tamanio,4,5);
+    desaprobados = retornarCantidadEntreNotas(listado,tamanio,1,3);
     printf("\n\nLa mayor nota es: %d",mayor);
     printf("\n\nLa menor nota es: %d",menor);
     printf("\n\nLa cantidad de pares es: %d",cantidadDePares);
     printf("\n\nLa suma total de las notas es: %d",total);
-    printf("\n\nEl promedio de las notas es: %d\n",promedio);
+    printf("\n\nEl promedio de las notas es: %d",promedio);
+    printf("\n\nLa cantidad de aprobados es: %d",aprobados);
+    printf("\n\nLa cantidad de gente a final es: %d",aFinal);
+    printf("\n\nLa cantidad de desaprobados es: %d\n",desaprobados);
 }
 int retornoMayor(int listado[],int tamanio)
 {
@@ -98,7 +108,7 @@ int retornoMenor(int listado[],int tamanio)
     }
     return menor;
 }
-int retornoPares(int listado[],int tamanio)
+int retornoCantidadDePares(int listado[],int tamanio)
 {
     int i;
     int cantidadDePares = 0;
@@ -111,3 +121,19 @@ int retornoPares(int listado[],int tamanio)
     }
     return cantidadDePares;
 }
+int retornarCantidadEntreNotas(int listado[],int tamanio,int limiteInferior,int limiteSuperior)
+{
+    int i;
+    int cantidadEntreNotas = 0;
+    for(i=0;i<tamanio;i++)
+    {
+        if(listado[i]>=limiteInferior && listado[i]<=limiteSuperior)
+        {
+            cantidadEntreNotas++;
+        }
+    }
+    return cantidadEntreNotas;
+}
+//void mostrarAprobados(int listado[],int tamanio);//6-10
+//void mostrarAFinales(int listado[],int tamanio);//4-5
+//int mostrarDesaprobados(int listado[],int tamanio);//1-3
