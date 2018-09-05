@@ -12,11 +12,9 @@ int retornoPares(int listado[],int tamanio);
 int main()
 {
     int listaDeNotas[CANTIDAD];
-
     cargarListado(listaDeNotas,CANTIDAD);
     mostrarListado(listaDeNotas,CANTIDAD);
     mostrarInformacionDelArray(listaDeNotas,CANTIDAD);
-
     return 0;
 }
 int retornoTotal(int listado[],int tamanio)
