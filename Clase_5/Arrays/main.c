@@ -4,42 +4,16 @@
 int retornoTotal(int listado[],int tamanio);
 int retornoPromedio(int listado[],int tamanio);
 void cargarListado(int listado[],int tamanio);
+void mostrarListado(int listado[],int tamanio);
+void mostrarInformacionDelArray(int listado[],int tamanio);
 int main()
 {
     int listaDeNotas[CANTIDAD];
-    int i;
-    int mayor,menor;
-    int total = 0;
-    int promedio;
-    /*printf("Tamaño: %d\n",sizeof(numeroIngresado));
-    printf("Tamaño: %d\n",sizeof(listaDeNotas));
-    printf("Direccion: %d\n",&numeroIngresado);
-    printf("Direccion: %d\n",listaDeNotas);*/
+
     cargarListado(listaDeNotas,CANTIDAD);
-    for(i=0;i<CANTIDAD;i++)
-    {
-        printf("\nLa nota es: %d",listaDeNotas[i]);
-    }
-    for(i=0;i<CANTIDAD;i++)
-    {
-        if(listaDeNotas[i]>mayor || i==0)
-        {
-            mayor=listaDeNotas[i];
-        }
-    }
-    for(i=0;i<CANTIDAD;i++)
-    {
-        if(listaDeNotas[i]<menor || i==0)
-        {
-            menor=listaDeNotas[i];
-        }
-    }
-    total = retornoTotal(listaDeNotas,CANTIDAD);
-    promedio = retornoPromedio(listaDeNotas,CANTIDAD);
-    printf("\nPromedio: %d",promedio);
-    printf("\nEl total es: %d",total);
-    printf("\nEl mayor es: %d",mayor);
-    printf("\nEl menor es: %d",menor);
+    mostrarListado(listaDeNotas,CANTIDAD);
+    mostrarInformacionDelArray(listaDeNotas,CANTIDAD);
+
     return 0;
 }
 
@@ -71,5 +45,54 @@ void cargarListado(int listado[],int tamanio)
         printf("\nIngrese nota n %d: ",i+1);
         scanf("%d",&numeroIngresado);
         listado[i]=numeroIngresado;
+        system("cls");
     }
+}
+
+void mostrarListado(int listado[],int tamanio)
+{
+    int i;
+    for(i=0;i<tamanio;i++)
+    {
+        printf("\nLa nota n %d es: %d",i+1,listado[i]);
+    }
+}
+
+void mostrarInformacionDelArray(int listado[],int tamanio)
+{
+    int i;
+    int mayor;
+    int menor;
+    int cantidadDePares = 0;
+    int total;
+    int promedio;
+    for(i=0;i<tamanio;i++)
+    {
+       if(listado[i]>mayor || i==0)
+       {
+           mayor = listado[i];
+       }
+    }
+    for(i=0;i<tamanio;i++)
+    {
+        if(listado[i]<menor || i==0)
+       {
+           menor = listado[i];
+       }
+    }
+    for(i=0;i<tamanio;i++)
+    {
+        if(listado[i]%2==0)
+        {
+            cantidadDePares++;
+        }
+    }
+    total = retornoTotal(listado,tamanio);
+    promedio = retornoPromedio(listado,tamanio);
+
+    printf("\n\nLa mayor nota es: %d",mayor);
+    printf("\n\nLa menor nota es: %d",menor);
+    printf("\n\nLa cantidad de pares es: %d",cantidadDePares);
+    printf("\n\nLa suma total de las notas es: %d",total);
+    printf("\n\nEl promedio de las notas es: %d\n",promedio);
 }
