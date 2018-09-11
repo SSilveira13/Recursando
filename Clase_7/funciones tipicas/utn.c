@@ -65,4 +65,3 @@ int utn_getFlotante(float* pFlotante,char* msg,char* msgErr,float min,float max,
     }
     return retorno;
 }
-
