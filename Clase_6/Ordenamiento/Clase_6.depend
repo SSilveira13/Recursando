@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1536620392 source:d:\santiagosilveira\clase_6\ordenamiento.c
+	<stdio.h>
+	<stdlib.h>
+
+1536620223 source:d:\santiagosilveira\clase_6\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ordenamiento.h"
+
+1536620206 d:\santiagosilveira\clase_6\ordenamiento.h
+
