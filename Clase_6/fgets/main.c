@@ -7,7 +7,7 @@ int main()
     char buffer[64];
     int cantidad;
 
-    fgets(buffer,sizeof(buffer),stdin);
+    fgets(buffer,sizeof(buffer)-2,stdin);
 
     cantidad = strlen(buffer);
 
@@ -17,3 +17,4 @@ int main()
 
     return 0;
 }
+//fgets(cadena,cantidad,stdin); para leer archivos
