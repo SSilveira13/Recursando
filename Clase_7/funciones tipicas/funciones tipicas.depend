@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1536707593 source:/home/alumno/Escritorio/Clase_7/funciones tipicas/utn.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+
+1536707601 source:/home/alumno/Escritorio/Clase_7/funciones tipicas/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1536707641 /home/alumno/Escritorio/Clase_7/funciones tipicas/utn.h
+
+1536707601 source:/home/alumno/Clase_7/funciones tipicas/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1536708312 /home/alumno/Clase_7/funciones tipicas/utn.h
+
+1536708589 source:/home/alumno/Clase_7/funciones tipicas/utn.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+
