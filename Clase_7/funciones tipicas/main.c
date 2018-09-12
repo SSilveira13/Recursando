@@ -5,7 +5,9 @@
 
 int main()
 {
-    //int entero;
-    //utn_getEntero(&entero,,,0,200,2);
+    char cadena[21];
+    int r;
+    r=utn_getCadena(cadena,"\nNombre: ","\nCasena invalida",2);
+    printf("%d",r);
     return 0;
 }
