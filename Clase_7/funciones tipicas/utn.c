@@ -9,7 +9,7 @@ static int getFloat(float* pBuffer);
 
 static int getChar(char* pBuffer);
 
-static int getString(char* pBuffer[]);
+static int getString(char pBuffer[]);
 
 static int getInt(int* pBuffer)
 {
@@ -26,9 +26,9 @@ static int getChar(char* pBuffer)
     return scanf("%c",pBuffer);
 }
 
-static int getString(char* pBuffer[])
+static int getString(char pBuffer[])
 {
-    return scanf("%s",*pBuffer);
+    return scanf("%s",pBuffer);
 }
 
 int utn_getEntero(int* pEntero,char* msg,char* msgErr,int min,int max,int reintentos)
