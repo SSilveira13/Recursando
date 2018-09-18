@@ -29,7 +29,7 @@ int main()
     char alta = 's';
     do
     {
-        system("clr");
+        system("clear");
         printf("1_Alta.\n");
         printf("2_Baja.\n");
         printf("3_Modificacion.\n");
@@ -42,7 +42,7 @@ int main()
         {
             case 1:
                 do{
-                    system("clr");
+                    system("clear");
                     for(i=0;i<200;i++)
                     {
                         if(eEmpleado[i].isEmpty == 1)
@@ -63,25 +63,25 @@ int main()
                     printf("\nFecha de nacimiento(dd/mm/aaaa): ");
                     fflush(stdin);
                     scanf("%d/%d/%d",&eEmpleado[vacio].fechaNacimiento.dia,&eEmpleado[vacio].fechaNacimiento.mes,&eEmpleado[vacio].fechaNacimiento.anio);
+                    eEmpleado[vacio].isEmpty = 0;
                     printf("\n\nQuiere seguir ingresando?(s/n) ");
                     fflush(stdin);
                     scanf("%c",&alta);
-                    eEmpleado[i].isEmpty = 0;
 
-                }while(alta=='s');
+                }while(alta == 's');
                 break;
             case 2:
-                system("clr");
+                system("clear");
                 for(i=0;i<200;i++)
                 {
                     if(eEmpleado[i].isEmpty == 0)
                     {
                         printf("-------------------------------------------------------------------------------\n");
-                        printf("Indice: %d/t",i);
-                        printf("Nombre: %s/t",eEmpleado[i].nombre);
-                        printf("Apellido: %s/n",eEmpleado[i].apellido);
-                        printf("DNI: %ld/t",eEmpleado[i].dni);
-                        printf("Fecha de nacimiento: %d/%d/%d/n",eEmpleado[i].fechaNacimiento.dia,eEmpleado[i].fechaNacimiento.mes,eEmpleado[i].fechaNacimiento.anio);
+                        printf("Indice: %d\t",i);
+                        printf("Nombre: %s\t",eEmpleado[i].nombre);
+                        printf("Apellido: %s\n",eEmpleado[i].apellido);
+                        printf("DNI: %ld\t",eEmpleado[i].dni);
+                        printf("Fecha de nacimiento: %d/%d/%d\n",eEmpleado[i].fechaNacimiento.dia,eEmpleado[i].fechaNacimiento.mes,eEmpleado[i].fechaNacimiento.anio);
                     }
                 }
                 printf("\n\nIngrese el indice a dar de baja: ");
@@ -90,29 +90,29 @@ int main()
                 eEmpleado[indice].isEmpty = 1;
                 break;
             case 3:
-                system("clr");
+                system("clear");
                 for(i=0;i<200;i++)
                 {
                     if(eEmpleado[i].isEmpty == 0)
                     {
                         printf("-------------------------------------------------------------------------------\n");
-                        printf("Indice: %d/t",i);
-                        printf("Nombre: %s/t",eEmpleado[i].nombre);
-                        printf("Apellido: %s/n",eEmpleado[i].apellido);
-                        printf("DNI: %ld/t",eEmpleado[i].dni);
-                        printf("Fecha de nacimiento: %d/%d/%d/n",eEmpleado[i].fechaNacimiento.dia,eEmpleado[i].fechaNacimiento.mes,eEmpleado[i].fechaNacimiento.anio);
+                        printf("Indice: %d\t",i);
+                        printf("Nombre: %s\t",eEmpleado[i].nombre);
+                        printf("Apellido: %s\n",eEmpleado[i].apellido);
+                        printf("DNI: %ld\t",eEmpleado[i].dni);
+                        printf("Fecha de nacimiento: %d/%d/%d\n",eEmpleado[i].fechaNacimiento.dia,eEmpleado[i].fechaNacimiento.mes,eEmpleado[i].fechaNacimiento.anio);
                     }
                 }
                 printf("\n\nIngrese el indice a dar modificar: ");
                 fflush(stdin);
                 scanf("%d",&indice);
-                printf("1_Nombre: %s/n",eEmpleado[indice].nombre);
-                printf("2_Apellido: %s/n",eEmpleado[indice].apellido);
-                printf("3_DNI: %ld/n",eEmpleado[indice].dni);
-                printf("4_Fecha de nacimiento: %d/%d/%d/n",eEmpleado[indice].fechaNacimiento.dia,eEmpleado[indice].fechaNacimiento.mes,eEmpleado[indice].fechaNacimiento.anio);
+                printf("1_Nombre: %s\n",eEmpleado[indice].nombre);
+                printf("2_Apellido: %s\n",eEmpleado[indice].apellido);
+                printf("3_DNI: %ld\n",eEmpleado[indice].dni);
+                printf("4_Fecha de nacimiento: %d/%d/%d\n",eEmpleado[indice].fechaNacimiento.dia,eEmpleado[indice].fechaNacimiento.mes,eEmpleado[indice].fechaNacimiento.anio);
                 fflush(stdin);
                 scanf("%d",&modificar);
-                system("clr");
+                system("clear");
                 switch(modificar)
                 {
                     case 1:
@@ -142,8 +142,23 @@ int main()
                 }
                 break;
             case 4:
+                system("clear");
+                for(i=0;i<200;i++)
+                {
+                    if(eEmpleado[i].isEmpty == 0)
+                    {
+                        printf("-------------------------------------------------------------------------------\n");
+                        printf("Indice: %d\t",i);
+                        printf("Nombre: %s\t",eEmpleado[i].nombre);
+                        printf("Apellido: %s\n",eEmpleado[i].apellido);
+                        printf("DNI: %ld\t",eEmpleado[i].dni);
+                        printf("Fecha de nacimiento: %d/%d/%d\n",eEmpleado[i].fechaNacimiento.dia,eEmpleado[i].fechaNacimiento.mes,eEmpleado[i].fechaNacimiento.anio);
+                    }
+                }
+                system("pause");
                 break;
             case 5:
+                salida = 'n';
                 break;
             default:
                 break;
