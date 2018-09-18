@@ -1,27 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct{
-int dia;
-int mes;
-int anio;
-}fecha;
-
-typedef struct{
-long int dni;
-int isEmpty;
-char nombre[31];
-char apellido[31];
-fecha fechaNacimiento;
-}persona;
-
-void inicializar(persona eEmpleado[]);
+#include "ABM.h"
+#define CANT 200
 
 int main()
 {
-    persona eEmpleado[200];
-    inicializar(eEmpleado);
+    persona eEmpleado[CANT];
+    abm_Inicializar(eEmpleado,CANT);
     int opcion,modificar;
     int i,vacio,indice;
     char auxiliar[31];
@@ -29,12 +15,8 @@ int main()
     char alta = 's';
     do
     {
-        system("clear");
-        printf("1_Alta.\n");
-        printf("2_Baja.\n");
-        printf("3_Modificacion.\n");
-        printf("4_Lista.\n");
-        printf("5_Salir.\n");
+        //system("clear");
+        abm_Menu();
         fflush(stdin);
         scanf("%d",&opcion);
 
@@ -42,15 +24,8 @@ int main()
         {
             case 1:
                 do{
-                    system("clear");
-                    for(i=0;i<200;i++)
-                    {
-                        if(eEmpleado[i].isEmpty == 1)
-                        {
-                            vacio = i;
-                            break;
-                        }
-                    }
+                    //system("clr");
+                    vacio = abm_espacioVacio(eEmpleado,CANT);
                     printf("Nombre: ");
                     fflush(stdin);
                     scanf("%s",eEmpleado[vacio].nombre);
@@ -71,7 +46,7 @@ int main()
                 }while(alta == 's');
                 break;
             case 2:
-                system("clear");
+                system("clr");
                 for(i=0;i<200;i++)
                 {
                     if(eEmpleado[i].isEmpty == 0)
@@ -90,7 +65,7 @@ int main()
                 eEmpleado[indice].isEmpty = 1;
                 break;
             case 3:
-                system("clear");
+                system("clr");
                 for(i=0;i<200;i++)
                 {
                     if(eEmpleado[i].isEmpty == 0)
@@ -112,7 +87,7 @@ int main()
                 printf("4_Fecha de nacimiento: %d/%d/%d\n",eEmpleado[indice].fechaNacimiento.dia,eEmpleado[indice].fechaNacimiento.mes,eEmpleado[indice].fechaNacimiento.anio);
                 fflush(stdin);
                 scanf("%d",&modificar);
-                system("clear");
+                system("clr");
                 switch(modificar)
                 {
                     case 1:
@@ -142,7 +117,7 @@ int main()
                 }
                 break;
             case 4:
-                system("clear");
+                system("clr");
                 for(i=0;i<200;i++)
                 {
                     if(eEmpleado[i].isEmpty == 0)
@@ -167,13 +142,4 @@ int main()
     }while(salida == 's');
 
     return 0;
-}
-
-void inicializar(persona eEmpleado[])
-{
-    int i;
-    for(i=0;i<200;i++)
-    {
-        eEmpleado[i].isEmpty = 1;
-    }
 }
