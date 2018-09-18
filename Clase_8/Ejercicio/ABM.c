@@ -14,6 +14,7 @@ void abm_Inicializar(persona eEmpleado[],int cantidad)
 
 void abm_Menu()
 {
+    printf("****AGENDA****\n\n");
     printf("1_Alta.\n");
     printf("2_Baja.\n");
     printf("3_Modificacion.\n");
@@ -26,28 +27,39 @@ void abm_Alta(persona eEmpleado[],int cantidad)
     char alta = 's';
     do{
         //system("clr");
-        abm_ingresaEmpleado(eEmpleado,abm_espacioVacio(eEmpleado,cantidad));
+        if(abm_ingresaEmpleado(eEmpleado,abm_espacioVacio(eEmpleado,cantidad),cantidad) == -1)
+        {
+            break;
+        }
         printf("\n\nQuiere seguir ingresando?(s/n) ");
         fflush(stdin);
         scanf("%c",&alta);
     }while(alta == 's');
 }
 
-void abm_ingresaEmpleado(persona eEmpleado[],int vacio)
+int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad)
 {
+    int retorno = -1;
     printf("Nombre: ");
     fflush(stdin);
     scanf("%s",eEmpleado[vacio].nombre);
     printf("\nApellido: ");
     fflush(stdin);
     scanf("%s",eEmpleado[vacio].apellido);
-    printf("\nDNI: ");
-    fflush(stdin);
-    scanf("%ld",&eEmpleado[vacio].dni);
-    printf("\nFecha de nacimiento(dd/mm/aaaa): ");
-    fflush(stdin);
-    scanf("%d/%d/%d",&eEmpleado[vacio].fechaNacimiento.dia,&eEmpleado[vacio].fechaNacimiento.mes,&eEmpleado[vacio].fechaNacimiento.anio);
-    eEmpleado[vacio].isEmpty = 0;
+    if(dniUnico(eEmpleado,vacio,cantidad) == -1)
+    {
+        //system("clr");
+        printf("Error el dni ya se encuentra registrado.");
+    }
+    else
+    {
+        printf("\nFecha de nacimiento(dd/mm/aaaa): ");
+        fflush(stdin);
+        scanf("%d/%d/%d",&eEmpleado[vacio].fechaNacimiento.dia,&eEmpleado[vacio].fechaNacimiento.mes,&eEmpleado[vacio].fechaNacimiento.anio);
+        eEmpleado[vacio].isEmpty = 0;
+        retorno = 0;
+    }
+    return retorno;
 }
 
 int abm_espacioVacio(persona eEmpleado[],int cantidad)
@@ -156,4 +168,27 @@ void fechaDeNacimientoMod(persona eEmpleado[],int indice)
     printf("Fecha de nacimiento nueva(dd/mm/aaaa): ");
     fflush(stdin);
     scanf("%d/%d/%d",&eEmpleado[indice].fechaNacimiento.dia,&eEmpleado[indice].fechaNacimiento.mes,&eEmpleado[indice].fechaNacimiento.anio);
+}
+
+int dniUnico(persona eEmpleado[],int indice,int cantidad)
+{
+    int retorno = 0;
+    int iteracion,comparacion;
+    printf("\nDNI: ");
+    fflush(stdin);
+    scanf("%ld",&eEmpleado[indice].dni);
+    for(iteracion=0;iteracion<cantidad;iteracion++)
+    {
+        if(eEmpleado[iteracion].isEmpty == 0)
+        {
+            for(comparacion=iteracion+1;comparacion<cantidad;comparacion++)
+            {
+                if((eEmpleado[comparacion].isEmpty == 0) && (eEmpleado[iteracion].dni == eEmpleado[comparacion].dni))
+                {
+                    retorno = -1;
+                }
+            }
+        }
+    }
+    return retorno;
 }

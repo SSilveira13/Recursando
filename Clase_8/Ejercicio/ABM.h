@@ -21,7 +21,7 @@ void abm_Menu();
 
 void abm_Alta(persona eEmpleado[],int cantidad);
 
-void abm_ingresaEmpleado(persona eEmpleado[],int vacio);
+int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad);
 
 int abm_espacioVacio(persona eEmpleado[],int cantidad);
 
@@ -39,6 +39,6 @@ void dniMod(persona eEmpleado[],int indice);
 
 void fechaDeNacimientoMod(persona eEmpleado[],int indice);
 
-
+int dniUnico(persona eEmpleado[],int indice,int cantidad);
 
 #endif
