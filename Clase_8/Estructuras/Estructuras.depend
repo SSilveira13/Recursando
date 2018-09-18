@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1537225266 source:/home/alumno/Clase_8/Estructuras/Estructura.c
+	<stdio.h>
+	<stdlib.h>
+	"Estructura.h"
+
+1537223667 /home/alumno/Clase_8/Estructuras/Estructura.h
+
+1537225541 source:/home/alumno/Clase_8/Estructuras/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Estructura.h"
+
