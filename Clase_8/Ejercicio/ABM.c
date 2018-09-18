@@ -96,7 +96,6 @@ void abm_Modificar(persona eEmpleado[],int cantidad)
 {
     //system("clr");
     int indice,modificar;
-    char auxiliar[31];
     abm_imprimirEmpleados(eEmpleado,cantidad);
     printf("\n\nIngrese el indice a modificar: ");
     fflush(stdin);
@@ -114,20 +113,13 @@ void abm_Modificar(persona eEmpleado[],int cantidad)
             nombreMod(eEmpleado,indice);
             break;
         case 2:
-            printf("Apelldio nuevo: ");
-            fflush(stdin);
-            scanf("%s",auxiliar);
-            strcpy(eEmpleado[indice].apellido,auxiliar);
+            apellidoMod(eEmpleado,indice);
             break;
         case 3:
-            printf("DNI nuevo: ");
-            fflush(stdin);
-            scanf("%ld",&eEmpleado[indice].dni);
+            dniMod(eEmpleado,indice);
             break;
         case 4:
-            printf("Fecha de nacimiento nueva(dd/mm/aaaa): ");
-            fflush(stdin);
-            scanf("%d/%d/%d",&eEmpleado[indice].fechaNacimiento.dia,&eEmpleado[indice].fechaNacimiento.mes,&eEmpleado[indice].fechaNacimiento.anio);
+            fechaDeNacimientoMod(eEmpleado,indice);
             break;
         default:
             break;
@@ -141,4 +133,27 @@ void nombreMod(persona eEmpleado[],int indice)
     fflush(stdin);
     scanf("%s",auxiliar);
     strcpy(eEmpleado[indice].nombre,auxiliar);
+}
+
+void apellidoMod(persona eEmpleado[],int indice)
+{
+    char auxiliar[31];
+    printf("Apelldio nuevo: ");
+    fflush(stdin);
+    scanf("%s",auxiliar);
+    strcpy(eEmpleado[indice].apellido,auxiliar);
+}
+
+void dniMod(persona eEmpleado[],int indice)
+{
+    printf("DNI nuevo: ");
+    fflush(stdin);
+    scanf("%ld",&eEmpleado[indice].dni);
+}
+
+void fechaDeNacimientoMod(persona eEmpleado[],int indice)
+{
+    printf("Fecha de nacimiento nueva(dd/mm/aaaa): ");
+    fflush(stdin);
+    scanf("%d/%d/%d",&eEmpleado[indice].fechaNacimiento.dia,&eEmpleado[indice].fechaNacimiento.mes,&eEmpleado[indice].fechaNacimiento.anio);
 }

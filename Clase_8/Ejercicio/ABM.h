@@ -39,4 +39,6 @@ void dniMod(persona eEmpleado[],int indice);
 
 void fechaDeNacimientoMod(persona eEmpleado[],int indice);
 
+
+
 #endif
