@@ -207,7 +207,7 @@ void abm_Ordenar(persona eEmpleado[],int cantidad)
                 {
                     intercambio(eEmpleado,iteracion,comparacion);
                 }
-                else if((eEmpleado[comparacion].isEmpty==0) && (strcmp(eEmpleado[iteracion].apellido,eEmpleado[comparacion].apellido)==0))
+                else if((eEmpleado[comparacion].isEmpty==0) && (strcmp(eEmpleado[iteracion].nombre,eEmpleado[comparacion].nombre)>0))
                 {
                     intercambio(eEmpleado,iteracion,comparacion);
                 }
