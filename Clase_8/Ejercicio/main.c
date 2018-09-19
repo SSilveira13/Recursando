@@ -34,7 +34,7 @@ int main()
                 break;
             case 5:
                 //system("clr");
-
+                abm_Ordenar(eEmpleado,CANT);
                 system("pause");
                 break;
             case 6:
