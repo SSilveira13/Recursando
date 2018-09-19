@@ -41,4 +41,8 @@ void fechaDeNacimientoMod(persona eEmpleado[],int indice);
 
 int dniUnico(persona eEmpleado[],int indice,int cantidad);
 
+void abm_Ordenar(persona eEmpleado[],int cantidad);
+
+void intercambio(persona eEmpleado[],int indice1,int indice2);
+
 #endif

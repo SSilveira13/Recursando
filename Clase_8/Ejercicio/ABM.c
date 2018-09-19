@@ -19,7 +19,8 @@ void abm_Menu()
     printf("2_Baja.\n");
     printf("3_Modificacion.\n");
     printf("4_Lista.\n");
-    printf("5_Salir.\n");
+    printf("5_Ordenar.\n");
+    printf("6_Salir.\n");
 }
 
 void abm_Alta(persona eEmpleado[],int cantidad)
@@ -191,4 +192,34 @@ int dniUnico(persona eEmpleado[],int indice,int cantidad)
         }
     }
     return retorno;
+}
+
+void abm_Ordenar(persona eEmpleado[],int cantidad)
+{
+    int iteracion,comparacion;
+    for(iteracion=0;iteracion<cantidad;iteracion++)
+    {
+        if(eEmpleado[iteracion].isEmpty == 0)
+        {
+            for(comparacion=iteracion+1;comparacion<cantidad;comparacion++)
+            {
+                if((eEmpleado[comparacion].isEmpty==0) && (strcmp(eEmpleado[iteracion].apellido,eEmpleado[comparacion].apellido)>0))
+                {
+                    intercambio(eEmpleado,iteracion,comparacion);
+                }
+                else if((eEmpleado[comparacion].isEmpty==0) && (strcmp(eEmpleado[iteracion].apellido,eEmpleado[comparacion].apellido)==0))
+                {
+                    intercambio(eEmpleado,iteracion,comparacion);
+                }
+            }
+        }
+    }
+}
+
+void intercambio(persona eEmpleado[],int indice1,int indice2)
+{
+    persona aux;
+    aux = eEmpleado[indice1];
+    eEmpleado[indice1] = eEmpleado[indice2];
+    eEmpleado[indice2] = aux;
 }

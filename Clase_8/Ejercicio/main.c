@@ -33,6 +33,11 @@ int main()
                 system("pause");
                 break;
             case 5:
+                //system("clr");
+
+                system("pause");
+                break;
+            case 6:
                 salida = 'n';
                 break;
             default:
