@@ -214,6 +214,7 @@ void abm_Ordenar(persona eEmpleado[],int cantidad)
             }
         }
     }
+    abm_imprimirEmpleados(eEmpleado,cantidad);
 }
 
 void intercambio(persona eEmpleado[],int indice1,int indice2)
