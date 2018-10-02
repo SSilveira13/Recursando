@@ -49,22 +49,15 @@ int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad)//listo
     printf("\nApellido: ");
     fflush(stdin);
     scanf("%s",eEmpleado[vacio].apellido);
-    if(idUnico(eEmpleado,vacio,cantidad) == -1)
-    {
-        system("cls");
-        printf("Error la id ya se encuentra registrado.");
-    }
-    else
-    {
-        printf("\nSalario: ");
-        fflush(stdin);
-        scanf("%f",&eEmpleado[vacio].salario);
-        printf("\nSector: ");
-        fflush(stdin);
-        scanf("%d",&eEmpleado[vacio].sector);
-        eEmpleado[vacio].isEmpty = 0;
-        retorno = 0;
-    }
+    eEmpleado[vacio].id = vacio + 1;
+    printf("\nSalario: ");
+    fflush(stdin);
+    scanf("%f",&eEmpleado[vacio].salario);
+    printf("\nSector: ");
+    fflush(stdin);
+    scanf("%d",&eEmpleado[vacio].sector);
+    eEmpleado[vacio].isEmpty = 0;
+    retorno = 0;
     return retorno;
 }
 
@@ -123,9 +116,8 @@ void abm_Modificar(persona eEmpleado[],int cantidad)
     indice = buscarId(eEmpleado,cantidad,id);
     printf("1_Nombre: %s\n",eEmpleado[indice].nombre);
     printf("2_Apellido: %s\n",eEmpleado[indice].apellido);
-    printf("3_ID: %d\n",eEmpleado[indice].id);
-    printf("4_Salario: %f\n",eEmpleado[indice].salario);
-    printf("5_Sector: %d\n",eEmpleado[indice].sector);
+    printf("3_Salario: %f\n",eEmpleado[indice].salario);
+    printf("4_Sector: %d\n",eEmpleado[indice].sector);
     fflush(stdin);
     scanf("%d",&modificar);
     system("cls");
@@ -138,15 +130,14 @@ void abm_Modificar(persona eEmpleado[],int cantidad)
             apellidoMod(eEmpleado,indice);
             break;
         case 3:
-            idMod(eEmpleado,indice);
-            break;
-        case 4:
             salarioMod(eEmpleado,indice);
             break;
-        case 5:
+        case 4:
             sectorMod(eEmpleado,indice);
             break;
         default:
+            system("cls");
+            printf("Error: opcion no valida.");
             break;
     }
 }
