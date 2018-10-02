@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1538517591 source:d:\santiago silveira\santiago_silveira_1f\abm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ABM.h"
+	"utn.h"
+	"Clientes.h"
+
+1538517787 d:\santiago silveira\santiago_silveira_1f\abm.h
+
+1538524342 source:d:\santiago silveira\santiago_silveira_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+
+1538520869 source:d:\santiago silveira\santiago_silveira_1f\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+
+1538520869 d:\santiago silveira\santiago_silveira_1f\utn.h
+
+1538524531 d:\santiago silveira\santiago_silveira_1f\clientes.h
+
+1538524500 source:d:\santiago silveira\santiago_silveira_1f\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+
