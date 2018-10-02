@@ -2,17 +2,12 @@
 #define ABM_H_INCLUDED
 
 typedef struct{
-int dia;
-int mes;
-int anio;
-}fecha;
-
-typedef struct{
-long int dni;
+int id;
+char nombre[51];
+char apellido[51];
+float salario;
+int sector;
 int isEmpty;
-char nombre[31];
-char apellido[31];
-fecha fechaNacimiento;
 }persona;
 
 /** \brief Inicializa el array de empleados poniendolos como vacios
@@ -35,10 +30,10 @@ void abm_Menu();
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
- * \return void
+ * \return int  -1 en caso de error y 0 en caso de exito
  *
  */
-void abm_Alta(persona eEmpleado[],int cantidad);
+int abm_Alta(persona eEmpleado[],int cantidad);
 
 /** \brief Toma los datos de un empleado para darlo de alta
  *
@@ -68,7 +63,7 @@ int abm_espacioVacio(persona eEmpleado[],int cantidad);
  */
 void abm_imprimirEmpleados(persona eEmpleado[],int cantidad);
 
-/** \brief  Muestra la lista de empleados y da de baja uno mediante su indice
+/** \brief  Muestra la lista de empleados y da de baja uno mediante su id
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
@@ -104,44 +99,42 @@ void nombreMod(persona eEmpleado[],int indice);
  */
 void apellidoMod(persona eEmpleado[],int indice);
 
-/** \brief  Modifica el dni del empleado mediante su indice
+/** \brief  Modifica el sector del empleado mediante su indice
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
  * \return void
  *
  */
-void dniMod(persona eEmpleado[],int indice);
+void sectorMod(persona eEmpleado[],int indice);
 
-/** \brief  Modifica la fecha de nacimiento del empleado mediante su indice
+/** \brief  Modifica el salario del empleado mediante su indice
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
  * \return void
  *
  */
-void fechaDeNacimientoMod(persona eEmpleado[],int indice);
+void salarioMod(persona eEmpleado[],int indice);
 
+/** \brief  Modifica el id del empleado mediante su indice
+ *
+ * \param eEmpleado[] persona   Array de empleados
+ * \param cantidad int  Cantidad de empleados del array
+ * \return void
+ *
+ */
+void idMod(persona eEmpleado[],int indice);
 
-/** \brief  Da de alta el dni del empleado con la condicion de que no se repita
+/** \brief  Da de alta la id del empleado con la condicion de que no se repita
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param indice int    Indice del empleado a dar de alta
  * \param cantidad int  Cantidad de empleados del array
- * \return int Retorna 0 si no hay problemas y -1 si el dni ya se encuentra en uso
+ * \return int Retorna 0 si no hay problemas y -1 si la id ya se encuentra en uso
  *
  */
-int dniUnico(persona eEmpleado[],int indice,int cantidad);
-
-/** \brief  Ordena alfabeticamente la lista de empleados
- *
- * \param eEmpleado[] persona   Array de empleados
- * \param cantidad int  Cantidad de empleados del array
- * \return void
- *
- */
-void abm_Ordenar(persona eEmpleado[],int cantidad);
-
+int idUnico(persona eEmpleado[],int indice,int cantidad);
 
 /** \brief  Intercambia el indice de dos empleados dentro del array
  *
@@ -152,5 +145,24 @@ void abm_Ordenar(persona eEmpleado[],int cantidad);
  *
  */
 void intercambio(persona eEmpleado[],int indice1,int indice2);
+
+/** \brief Imprime una lista ordenada por apellido y sector, y un breve informe sobre los salarios
+ *
+ * \param eEmpleado persona Array de empleados
+ * \param cantidad int  Cantidad de empleados del array
+ * \return void
+ *
+ */
+void abm_informarEmpleados(persona eEmpleado[],int cantidad);
+
+/** \brief  Busca el indice de un empleado mediante su id
+ *
+ * \param eEmpleado[] persona   Array de empleados
+ * \param cantidad int  Cantiadad de empleados del array
+ * \param id int    Id del empleado a buscar
+ * \return int  Retorna -1 en caso de error y el indice correspondiente al id en caso exitoso
+ *
+ */
+int buscarId(persona eEmpleado[],int cantidad,int id);
 
 #endif

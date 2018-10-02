@@ -16,29 +16,31 @@ void abm_Menu()
 {
     printf("****AGENDA****\n\n");
     printf("1_Alta.\n");
-    printf("2_Baja.\n");
-    printf("3_Modificacion.\n");
-    printf("4_Lista.\n");
-    printf("5_Ordenar.\n");
-    printf("6_Salir.\n");
+    printf("2_Modificacion.\n");
+    printf("3_Baja.\n");
+    printf("4_Informar.\n");
+    printf("5_Salir.\n");
 }
 
-void abm_Alta(persona eEmpleado[],int cantidad)
+int abm_Alta(persona eEmpleado[],int cantidad)//listo
 {
+    int retorno=0;
     char alta = 's';
     do{
-        //system("clr");
+        system("cls");
         if(abm_ingresaEmpleado(eEmpleado,abm_espacioVacio(eEmpleado,cantidad),cantidad) == -1)
         {
+            retorno=-1;
             break;
         }
         printf("\n\nQuiere seguir ingresando?(s/n) ");
         fflush(stdin);
         scanf("%c",&alta);
     }while(alta == 's');
+    return retorno;
 }
 
-int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad)
+int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad)//listo
 {
     int retorno = -1;
     printf("Nombre: ");
@@ -47,16 +49,19 @@ int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad)
     printf("\nApellido: ");
     fflush(stdin);
     scanf("%s",eEmpleado[vacio].apellido);
-    if(dniUnico(eEmpleado,vacio,cantidad) == -1)
+    if(idUnico(eEmpleado,vacio,cantidad) == -1)
     {
-        //system("clr");
-        printf("Error el dni ya se encuentra registrado.");
+        system("cls");
+        printf("Error la id ya se encuentra registrado.");
     }
     else
     {
-        printf("\nFecha de nacimiento(dd/mm/aaaa): ");
+        printf("\nSalario: ");
         fflush(stdin);
-        scanf("%d/%d/%d",&eEmpleado[vacio].fechaNacimiento.dia,&eEmpleado[vacio].fechaNacimiento.mes,&eEmpleado[vacio].fechaNacimiento.anio);
+        scanf("%f",&eEmpleado[vacio].salario);
+        printf("\nSector: ");
+        fflush(stdin);
+        scanf("%d",&eEmpleado[vacio].sector);
         eEmpleado[vacio].isEmpty = 0;
         retorno = 0;
     }
@@ -77,7 +82,7 @@ int abm_espacioVacio(persona eEmpleado[],int cantidad)
     return retorno;
 }
 
-void abm_imprimirEmpleados(persona eEmpleado[],int cantidad)
+void abm_imprimirEmpleados(persona eEmpleado[],int cantidad)//listo
 {
     int iteracion;
     for(iteracion=0;iteracion<cantidad;iteracion++)
@@ -85,41 +90,45 @@ void abm_imprimirEmpleados(persona eEmpleado[],int cantidad)
         if(eEmpleado[iteracion].isEmpty == 0)
         {
             printf("-------------------------------------------------------------------------------\n");
-            printf("Indice: %d\t",iteracion);
+            printf("Id: %d\t",eEmpleado[iteracion].id);
             printf("Nombre: %s\t",eEmpleado[iteracion].nombre);
             printf("Apellido: %s\n",eEmpleado[iteracion].apellido);
-            printf("DNI: %ld\t",eEmpleado[iteracion].dni);
-            printf("Fecha de nacimiento: %d/%d/%d\n",eEmpleado[iteracion].fechaNacimiento.dia,eEmpleado[iteracion].fechaNacimiento.mes,eEmpleado[iteracion].fechaNacimiento.anio);
+            printf("ID: %d\t",eEmpleado[iteracion].id);
+            printf("Salario: %f\t",eEmpleado[iteracion].salario);
+            printf("Sector: %d\t",eEmpleado[iteracion].sector);
         }
     }
 }
 
-void abm_Baja(persona eEmpleado[],int cantidad)
+void abm_Baja(persona eEmpleado[],int cantidad)//listo
 {
-    //system("clr");
-    int indice;
+    system("cls");
+    int id,indice;
     abm_imprimirEmpleados(eEmpleado,cantidad);
-    printf("\n\nIngrese el indice a dar de baja: ");
+    printf("\n\nIngrese el id del empleado a dar de baja: ");
     fflush(stdin);
-    scanf("%d",&indice);
+    scanf("%d",&id);
+    indice = buscarId(eEmpleado,cantidad,id);
     eEmpleado[indice].isEmpty = 1;
 }
 
 void abm_Modificar(persona eEmpleado[],int cantidad)
 {
-    //system("clr");
-    int indice,modificar;
+    system("cls");
+    int indice,id,modificar;
     abm_imprimirEmpleados(eEmpleado,cantidad);
-    printf("\n\nIngrese el indice a modificar: ");
+    printf("\n\nIngrese el id del empleado a modificar: ");
     fflush(stdin);
-    scanf("%d",&indice);
+    scanf("%d",&id);
+    indice = buscarId(eEmpleado,cantidad,id);
     printf("1_Nombre: %s\n",eEmpleado[indice].nombre);
     printf("2_Apellido: %s\n",eEmpleado[indice].apellido);
-    printf("3_DNI: %ld\n",eEmpleado[indice].dni);
-    printf("4_Fecha de nacimiento: %d/%d/%d\n",eEmpleado[indice].fechaNacimiento.dia,eEmpleado[indice].fechaNacimiento.mes,eEmpleado[indice].fechaNacimiento.anio);
+    printf("3_ID: %d\n",eEmpleado[indice].id);
+    printf("4_Salario: %f\n",eEmpleado[indice].salario);
+    printf("5_Sector: %d\n",eEmpleado[indice].sector);
     fflush(stdin);
     scanf("%d",&modificar);
-    system("clr");
+    system("cls");
     switch(modificar)
     {
         case 1:
@@ -129,17 +138,20 @@ void abm_Modificar(persona eEmpleado[],int cantidad)
             apellidoMod(eEmpleado,indice);
             break;
         case 3:
-            dniMod(eEmpleado,indice);
+            idMod(eEmpleado,indice);
             break;
         case 4:
-            fechaDeNacimientoMod(eEmpleado,indice);
+            salarioMod(eEmpleado,indice);
+            break;
+        case 5:
+            sectorMod(eEmpleado,indice);
             break;
         default:
             break;
     }
 }
 
-void nombreMod(persona eEmpleado[],int indice)
+void nombreMod(persona eEmpleado[],int indice)//listo
 {
     char auxiliar[31];
     printf("Nombre nuevo: ");
@@ -148,7 +160,7 @@ void nombreMod(persona eEmpleado[],int indice)
     strcpy(eEmpleado[indice].nombre,auxiliar);
 }
 
-void apellidoMod(persona eEmpleado[],int indice)
+void apellidoMod(persona eEmpleado[],int indice)//listo
 {
     char auxiliar[31];
     printf("Apelldio nuevo: ");
@@ -157,34 +169,41 @@ void apellidoMod(persona eEmpleado[],int indice)
     strcpy(eEmpleado[indice].apellido,auxiliar);
 }
 
-void dniMod(persona eEmpleado[],int indice)
+void idMod(persona eEmpleado[],int indice)//listo
 {
-    printf("DNI nuevo: ");
+    printf("ID nuevo: ");
     fflush(stdin);
-    scanf("%ld",&eEmpleado[indice].dni);
+    scanf("%d",&eEmpleado[indice].id);
 }
 
-void fechaDeNacimientoMod(persona eEmpleado[],int indice)
+void sectorMod(persona eEmpleado[],int indice)//listo
 {
-    printf("Fecha de nacimiento nueva(dd/mm/aaaa): ");
+    printf("Sector nuevo: ");
     fflush(stdin);
-    scanf("%d/%d/%d",&eEmpleado[indice].fechaNacimiento.dia,&eEmpleado[indice].fechaNacimiento.mes,&eEmpleado[indice].fechaNacimiento.anio);
+    scanf("%d",&eEmpleado[indice].sector);
 }
 
-int dniUnico(persona eEmpleado[],int indice,int cantidad)
+void salarioMod(persona eEmpleado[],int indice)//listo
+{
+    printf("Salario nuevo: ");
+    fflush(stdin);
+    scanf("%f",&eEmpleado[indice].salario);
+}
+
+int idUnico(persona eEmpleado[],int indice,int cantidad)
 {
     int retorno = 0;
     int iteracion,comparacion;
-    printf("\nDNI: ");
+    printf("\nID: ");
     fflush(stdin);
-    scanf("%ld",&eEmpleado[indice].dni);
+    scanf("%d",&eEmpleado[indice].id);
     for(iteracion=0;iteracion<cantidad;iteracion++)
     {
         if(eEmpleado[iteracion].isEmpty == 0)
         {
             for(comparacion=iteracion+1;comparacion<cantidad;comparacion++)
             {
-                if((eEmpleado[comparacion].isEmpty == 0) && (eEmpleado[iteracion].dni == eEmpleado[comparacion].dni))
+                if((eEmpleado[comparacion].isEmpty == 0) && (eEmpleado[iteracion].id == eEmpleado[comparacion].id))
                 {
                     retorno = -1;
                 }
@@ -194,9 +213,10 @@ int dniUnico(persona eEmpleado[],int indice,int cantidad)
     return retorno;
 }
 
-void abm_Ordenar(persona eEmpleado[],int cantidad)
+void abm_informarEmpleados(persona eEmpleado[],int cantidad)
 {
-    int iteracion,comparacion;
+    int iteracion,comparacion,contador=0;
+    float totalSal,promedioSal;
     for(iteracion=0;iteracion<cantidad;iteracion++)
     {
         if(eEmpleado[iteracion].isEmpty == 0)
@@ -207,7 +227,7 @@ void abm_Ordenar(persona eEmpleado[],int cantidad)
                 {
                     intercambio(eEmpleado,iteracion,comparacion);
                 }
-                else if((eEmpleado[comparacion].isEmpty==0) && (strcmp(eEmpleado[iteracion].nombre,eEmpleado[comparacion].nombre)>0))
+                else if((eEmpleado[comparacion].isEmpty==0) && (eEmpleado[iteracion].sector<=eEmpleado[comparacion].sector))
                 {
                     intercambio(eEmpleado,iteracion,comparacion);
                 }
@@ -215,6 +235,26 @@ void abm_Ordenar(persona eEmpleado[],int cantidad)
         }
     }
     abm_imprimirEmpleados(eEmpleado,cantidad);
+    for(iteracion=0;iteracion<cantidad;iteracion++)
+    {
+        if(eEmpleado[iteracion].isEmpty==0)
+        {
+            totalSal = totalSal + eEmpleado[iteracion].salario;
+            contador++;
+        }
+    }
+    printf("\nSalario total: %f\n",totalSal);
+    promedioSal = totalSal / contador;
+    printf("Promedio de salarios: %f\n",promedioSal);
+    contador=0;
+    for(iteracion=0;iteracion<cantidad;iteracion++)
+    {
+        if(eEmpleado[iteracion].isEmpty==0 && eEmpleado[iteracion].salario>promedioSal)
+        {
+            contador++;
+        }
+    }
+    printf("Cantidad de empleados que superan el salario promedio: %d",contador);
 }
 
 void intercambio(persona eEmpleado[],int indice1,int indice2)
@@ -223,4 +263,18 @@ void intercambio(persona eEmpleado[],int indice1,int indice2)
     aux = eEmpleado[indice1];
     eEmpleado[indice1] = eEmpleado[indice2];
     eEmpleado[indice2] = aux;
+}
+
+int buscarId(persona eEmpleado[],int cantidad,int id)
+{
+    int iteracion,retorno=-1;
+    for(iteracion=0;iteracion<cantidad;iteracion++)
+    {
+        if(eEmpleado[iteracion].isEmpty == 0 && eEmpleado[iteracion].id == id)
+        {
+            retorno = iteracion;
+            break;
+        }
+    }
+    return retorno;
 }
