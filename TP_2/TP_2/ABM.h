@@ -14,10 +14,10 @@ int isEmpty;
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
- * \return void
+ * \return int  Retorna -1 en caso de error [puntero a NULL o cantidad invalida] y 0 en caso exitoso
  *
  */
-void abm_Inicializar(persona eEmpleado[],int cantidad);
+int abm_Inicializar(persona* eEmpleado,int cantidad);
 
 /** \brief Imprime el menu de opciones principales
  *
@@ -30,10 +30,10 @@ void abm_Menu();
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
- * \return int  -1 en caso de error y 0 en caso de exito
+ * \return int  Retorna -1 en caso de error [puntero a NULL o cantidad invalida] y 0 en caso exitoso
  *
  */
-int abm_Alta(persona eEmpleado[],int cantidad);
+int abm_Alta(persona* eEmpleado,int cantidad);
 
 /** \brief Toma los datos de un empleado para darlo de alta
  *
@@ -43,7 +43,7 @@ int abm_Alta(persona eEmpleado[],int cantidad);
  * \return int  Devuelve -1 en caso de error y 0 si se logra completar
  *
  */
-int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad);
+int abm_ingresaEmpleado(persona* eEmpleado,int vacio,int cantidad);
 
 /** \brief Busca el primer espacio vacio en el array
  *
@@ -52,7 +52,7 @@ int abm_ingresaEmpleado(persona eEmpleado[],int vacio,int cantidad);
  * \return int Devuelve el indice del espacio vacio
  *
  */
-int abm_espacioVacio(persona eEmpleado[],int cantidad);
+int abm_espacioVacio(persona* eEmpleado,int cantidad);
 
 /** \brief  Toma el array de empleados y lo imprime por pantalla
  *
@@ -61,16 +61,16 @@ int abm_espacioVacio(persona eEmpleado[],int cantidad);
  * \return void
  *
  */
-void abm_imprimirEmpleados(persona eEmpleado[],int cantidad);
+void abm_imprimirEmpleados(persona* eEmpleado,int cantidad);
 
 /** \brief  Muestra la lista de empleados y da de baja uno mediante su id
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantidad de empleados del array
- * \return void
- *
+ * \return int Retorna -1 en caso de error [puntero a NULL o cantidad invalida o no se encontro al empleado]
+ *             y 0 en caso de baja exitosa.
  */
-void abm_Baja(persona eEmpleado[],int cantidad);
+int abm_Baja(persona* eEmpleado,int cantidad);
 
 /** \brief  Muestra la lista de empleados y da opcion a modificar todos los parametros excepto el indice
  *
@@ -79,7 +79,7 @@ void abm_Baja(persona eEmpleado[],int cantidad);
  * \return void
  *
  */
-void abm_Modificar(persona eEmpleado[],int cantidad);
+void abm_Modificar(persona* eEmpleado,int cantidad);
 
 /** \brief  Modifica el nombre del empleado mediante su indice
  *
@@ -88,7 +88,7 @@ void abm_Modificar(persona eEmpleado[],int cantidad);
  * \return void
  *
  */
-void nombreMod(persona eEmpleado[],int indice);
+void nombreMod(persona* eEmpleado,int indice);
 
 /** \brief  Modifica el apellido del empleado mediante su indice
  *
@@ -97,7 +97,7 @@ void nombreMod(persona eEmpleado[],int indice);
  * \return void
  *
  */
-void apellidoMod(persona eEmpleado[],int indice);
+void apellidoMod(persona* eEmpleado,int indice);
 
 /** \brief  Modifica el sector del empleado mediante su indice
  *
@@ -106,7 +106,7 @@ void apellidoMod(persona eEmpleado[],int indice);
  * \return void
  *
  */
-void sectorMod(persona eEmpleado[],int indice);
+void sectorMod(persona* eEmpleado,int indice);
 
 /** \brief  Modifica el salario del empleado mediante su indice
  *
@@ -115,7 +115,7 @@ void sectorMod(persona eEmpleado[],int indice);
  * \return void
  *
  */
-void salarioMod(persona eEmpleado[],int indice);
+void salarioMod(persona* eEmpleado,int indice);
 
 /** \brief  Modifica el id del empleado mediante su indice
  *
@@ -124,7 +124,7 @@ void salarioMod(persona eEmpleado[],int indice);
  * \return void
  *
  */
-void idMod(persona eEmpleado[],int indice);
+void idMod(persona* eEmpleado,int indice);
 
 /** \brief  Da de alta la id del empleado con la condicion de que no se repita
  *
@@ -134,7 +134,7 @@ void idMod(persona eEmpleado[],int indice);
  * \return int Retorna 0 si no hay problemas y -1 si la id ya se encuentra en uso
  *
  */
-int idUnico(persona eEmpleado[],int indice,int cantidad);
+int idUnico(persona* eEmpleado,int indice,int cantidad);
 
 /** \brief  Intercambia el indice de dos empleados dentro del array
  *
@@ -144,7 +144,7 @@ int idUnico(persona eEmpleado[],int indice,int cantidad);
  * \return void
  *
  */
-void intercambio(persona eEmpleado[],int indice1,int indice2);
+void intercambio(persona* eEmpleado,int indice1,int indice2);
 
 /** \brief Imprime una lista ordenada por apellido y sector, y un breve informe sobre los salarios
  *
@@ -153,16 +153,16 @@ void intercambio(persona eEmpleado[],int indice1,int indice2);
  * \return void
  *
  */
-void abm_informarEmpleados(persona eEmpleado[],int cantidad);
+void abm_informarEmpleados(persona* eEmpleado,int cantidad);
 
 /** \brief  Busca el indice de un empleado mediante su id
  *
  * \param eEmpleado[] persona   Array de empleados
  * \param cantidad int  Cantiadad de empleados del array
  * \param id int    Id del empleado a buscar
- * \return int  Retorna -1 en caso de error y el indice correspondiente al id en caso exitoso
- *
+ * \return int  Retorna -1 en caso de error [puntero a NULL o cantidad invalida o empleado no encontrado]
+ *              y el indice correspondiente al id en caso exitoso.
  */
-int buscarId(persona eEmpleado[],int cantidad,int id);
+int buscarId(persona* eEmpleado,int cantidad,int id);
 
 #endif

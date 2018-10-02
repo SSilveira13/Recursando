@@ -3,13 +3,18 @@
 #include <string.h>
 #include "ABM.h"
 
-void abm_Inicializar(persona eEmpleado[],int cantidad)
+int abm_Inicializar(persona eEmpleado[],int cantidad)
 {
-    int iteracion;
-    for(iteracion=0;iteracion<cantidad;iteracion++)
+    int iteracion,retorno=-1;
+    if(eEmpleado != NULL && cantidad>0)
     {
+        retorno = 0;
+        for(iteracion=0;iteracion<cantidad;iteracion++)
+        {
         eEmpleado[iteracion].isEmpty = 1;
+        }
     }
+    return retorno;
 }
 
 void abm_Menu()
@@ -26,17 +31,20 @@ int abm_Alta(persona eEmpleado[],int cantidad)//listo
 {
     int retorno=0;
     char alta = 's';
-    do{
-        system("cls");
-        if(abm_ingresaEmpleado(eEmpleado,abm_espacioVacio(eEmpleado,cantidad),cantidad) == -1)
-        {
-            retorno=-1;
-            break;
-        }
-        printf("\n\nQuiere seguir ingresando?(s/n) ");
-        fflush(stdin);
-        scanf("%c",&alta);
-    }while(alta == 's');
+    if(eEmpleado != NULL && cantidad>0)
+    {
+        do{
+            system("cls");
+            if(abm_ingresaEmpleado(eEmpleado,abm_espacioVacio(eEmpleado,cantidad),cantidad) == -1)
+            {
+                retorno=-1;
+                break;
+            }
+            printf("\n\nQuiere seguir ingresando?(s/n) ");
+            fflush(stdin);
+            scanf("%c",&alta);
+        }while(alta == 's');
+    }
     return retorno;
 }
 
@@ -93,16 +101,21 @@ void abm_imprimirEmpleados(persona eEmpleado[],int cantidad)//listo
     }
 }
 
-void abm_Baja(persona eEmpleado[],int cantidad)//listo
+int abm_Baja(persona eEmpleado[],int cantidad)//listo
 {
     system("cls");
-    int id,indice;
+    int id,indice,retorno=-1;
     abm_imprimirEmpleados(eEmpleado,cantidad);
     printf("\n\nIngrese el id del empleado a dar de baja: ");
     fflush(stdin);
     scanf("%d",&id);
     indice = buscarId(eEmpleado,cantidad,id);
-    eEmpleado[indice].isEmpty = 1;
+    if(eEmpleado != NULL && cantidad>0 && indice != -1)
+    {
+        retorno = 0;
+        eEmpleado[indice].isEmpty = 1;
+    }
+    return retorno;
 }
 
 void abm_Modificar(persona eEmpleado[],int cantidad)
@@ -259,12 +272,15 @@ void intercambio(persona eEmpleado[],int indice1,int indice2)
 int buscarId(persona eEmpleado[],int cantidad,int id)
 {
     int iteracion,retorno=-1;
-    for(iteracion=0;iteracion<cantidad;iteracion++)
+    if(eEmpleado != NULL && cantidad>0)
     {
-        if(eEmpleado[iteracion].isEmpty == 0 && eEmpleado[iteracion].id == id)
+        for(iteracion=0;iteracion<cantidad;iteracion++)
         {
-            retorno = iteracion;
-            break;
+            if(eEmpleado[iteracion].isEmpty == 0 && eEmpleado[iteracion].id == id)
+            {
+                retorno = iteracion;
+                break;
+            }
         }
     }
     return retorno;
