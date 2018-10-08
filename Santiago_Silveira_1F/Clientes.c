@@ -342,7 +342,6 @@ void juego_ordenar(juegos* eJuego,int cantidadJ)
             }
         }
     }
-    abm_imprimirJuegos(eJuego,cantidadJ);
 }
 
 void cliente_ordenar(cliente* eCliente,int cantidadC)
@@ -365,7 +364,6 @@ void cliente_ordenar(cliente* eCliente,int cantidadC)
             }
         }
     }
-    abm_imprimirClientes(eCliente,cantidadC);
 }
 
 void juego_intercambio(juegos* eJuego,int indice1,int indice2)
@@ -488,11 +486,10 @@ void abm_Alquiler_Listar(alquileres* eAlquiler,int cantidadA)
         if(eAlquiler[iteracion].isEmpty == 0)
         {
             printf("-------------------------------------------------------------------------------\n");
-            /*printf("Codigo de cliente: %d\t",eCliente[iteracion].codigoDeCliente);
-            printf("Apellido: %s\t",eCliente[iteracion].apellido);
-            printf("Nombre: %s\n",eCliente[iteracion].nombre);
-            printf("Domicilio: %s\t",eCliente[iteracion].domicilio);
-            printf("Telefono: %s\n",eCliente[iteracion].telefono);*/
+            printf("Codigo de alquiler: %d\t",eAlquiler[iteracion].codigoDeAlquiler);
+            printf("Codigo de cliente: %d\t",eAlquiler[iteracion].codigoDeCliente);
+            printf("Codigo de juego: %d\n",eAlquiler[iteracion].codigoDeJuego);
+            printf("Fecha de alquiler: %d/%d/%d\n",eAlquiler[iteracion].eFecha.dia,eAlquiler[iteracion].eFecha.mes,eAlquiler[iteracion].eFecha.anio);
         }
     }
 }

@@ -27,6 +27,12 @@ int main()
                 {
                     flagJuego = 1;
                 }
+                else
+                {
+                    system("cls");
+                    printf("Error al dar de alta");
+                    system("pause");
+                }
                 break;
             case 2://MOD_J
                 if(flagJuego == 1)
@@ -44,12 +50,19 @@ int main()
                 if(flagJuego == 1)
                 {
                     abm_juego_Listar(eJuego,CJUEGOS);
+                    system("pause");
                 }
                 break;
             case 5://ALTA_C
                 if(abm_Cliente_Alta(eCliente,CCLIENTES)==0)
                 {
                     flagCliente = 1;
+                }
+                else
+                {
+                    system("cls");
+                    printf("Error al dar de alta");
+                    system("pause");
                 }
                 break;
             case 6://MOD_C
@@ -68,6 +81,7 @@ int main()
                 if(flagCliente == 1)
                 {
                     abm_cliente_Listar(eCliente,CCLIENTES);
+                    system("pause");
                 }
                 break;
             case 9://ALTA_A
@@ -77,12 +91,19 @@ int main()
                     {
                         flagAlquiler = 1;
                     }
+                    else
+                    {
+                        system("cls");
+                        printf("Error al dar de alta");
+                        system("pause");
+                    }
                 }
                 break;
             case 10://LISTA_A
                 if(flagAlquiler == 1)
                 {
                     abm_Alquiler_Listar(eAlquiler,CJUEGOS*CCLIENTES);
+                    system("pause");
                 }
                 break;
             case 11://SALIR
