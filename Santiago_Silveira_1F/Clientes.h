@@ -31,20 +31,80 @@ fecha eFecha;
 int isEmpty;
 }alquileres;
 
+/** \brief  Imprime el menu de opciones principales en pantalla
+ *
+ * \return void
+ *
+ */
 void abm_Menu();
 
+/** \brief  Inicializa todas las listas
+ *
+ * \param eCliente cliente* Array de clientes
+ * \param cantidadC int Cantidad de clientes
+ * \param eJuego juegos*    Array de juegos
+ * \param cantidadJ int Cantiadad de juegos
+ * \param eAlquiler alquileres* Array de alquileres
+ * \param cantidadA int Cantidad de alquileres
+ * \return void
+ *
+ */
 void abm_Inicializar(cliente* eCliente,int cantidadC,juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA);
 
+/** \brief  Busca un espacio vacio del array de clientes
+ *
+ * \param eJuego juegos*    Array de juegos
+ * \param cantidadJ int Cantidad de juegos
+ * \return int  Retorna el indice del espacio vacio y en caso de error retorna -1
+ *
+ */
 int abm_Juego_espacioVacio(juegos* eJuego,int cantidadJ);
 
+/** \brief  Busca un espacio vacio del array de clientes
+ *
+ * \param eCliente cliente* Array de clientes
+ * \param cantidadC int Cantidad de clientes
+ * \return int  Retorna el indice del espacio vacio y en caso de error retorna -1
+ *
+ */
 int abm_Cliente_espacioVacio(cliente* eCliente,int cantidadC);
 
+/** \brief  Da de alta un juego en la lista
+ *
+ * \param eJuego juegos*    Array de juegos
+ * \param cantidad int  Cantidad de juegos
+ * \return int  Retorna -1 en caso de error y 0 en caso exitoso
+ *
+ */
 int abm_Juego_Alta(juegos* eJuego,int cantidad);
 
+/** \brief  Da de alta un cliente en la lista
+ *
+ * \param eCliente cliente* Array de clientes
+ * \param cantidad int  Cantidad de clientes
+ * \return int  Retorna -1 en caso de error y 0 en caso exitoso
+ *
+ */
 int abm_Cliente_Alta(cliente* eCliente,int cantidad);
 
+/** \brief  Da las instrucciones para llenar el formulario de un juego
+ *
+ * \param eJuego juegos*    Array de juegos
+ * \param vacio int Espacio vacio necesario para llenar el formulario
+ * \param cantidadJ int Cantidad de juegos
+ * \return int  Retorna -1 en caso de error y 0 en caso exitoso
+ *
+ */
 int abm_ingresaJuego(juegos* eJuego,int vacio,int cantidadJ);
 
+/** \brief  Da las instrucciones para llenar el formulario de un cliente
+ *
+ * \param eCliente cliente* Array de clientes
+ * \param vacio int Espacio vacio necesario para llenar el formulario
+ * \param cantidadC int Cantidad de clientes
+ * \return int  Retorna -1 en caso de error y 0 en caso exitoso
+ *
+ */
 int abm_ingresaCliente(cliente* eCliente,int vacio,int cantidadC);
 
 int abm_Juego_Modificar(juegos* eJuego,int cantidadJ);
