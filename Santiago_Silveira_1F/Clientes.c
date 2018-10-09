@@ -796,3 +796,21 @@ void abm_Informe_BuscarClientePorFecha(alquileres* eAlquiler,int cantidadA,clien
     }
     printf("\n\nALQUILARON EL %d/%d/%d.",dia,mes,anio);
 }
+
+void abm_Informe_BurbujeoImporteJuegos(juegos* eJuego,int cantidadJ)
+{
+    int iteracion,comparacion;
+    for(iteracion=0;iteracion<cantidadJ;iteracion++)
+    {
+        if(eJuego[iteracion].isEmpty == 0)
+        {
+            for(comparacion=iteracion+1;comparacion<cantidadJ;comparacion++)
+            {
+                if((eJuego[comparacion].isEmpty==0) && (eJuego[iteracion].importe>=eJuego[comparacion].importe))
+                {
+                    juego_intercambio(eJuego,iteracion,comparacion);
+                }
+            }
+        }
+    }
+}

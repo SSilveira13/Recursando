@@ -189,6 +189,7 @@ int main()
                         abm_Informe_BuscarClientePorFecha(eAlquiler,CJUEGOS*CCLIENTES,eCliente,CCLIENTES);
                         break;
                     case 9://Listar juegos ordenados por importe(descendente), utilizando burbujeo mas eficiente
+                        abm_Informe_BurbujeoImporteJuegos(eJuego,CJUEGOS);
                         break;
                     case 10://Listar clientes ordenados por apellido(ascendente), utilizando insercion
                         break;

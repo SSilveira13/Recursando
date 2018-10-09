@@ -190,4 +190,6 @@ void abm_Informe_BuscarJuegoPorFecha(alquileres* eAlquiler,int cantidadA,juegos*
 
 void abm_Informe_BuscarClientePorFecha(alquileres* eAlquiler,int cantidadA,cliente* eCliente,int cantidadC);
 
+void abm_Informe_BurbujeoImporteJuegos(juegos* eJuego,int cantidadJ);
+
 #endif
