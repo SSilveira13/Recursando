@@ -59,3 +59,28 @@
 	"utn.h"
 	"Clientes.h"
 
+1539029267 source:d:\santiago silveira\recursando-master\santiago_silveira_1f\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+
+1539038660 d:\santiago silveira\recursando-master\santiago_silveira_1f\utn.h
+
+1539043682 d:\santiago silveira\recursando-master\santiago_silveira_1f\clientes.h
+
+1539039317 source:d:\santiago silveira\recursando-master\santiago_silveira_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+
+1539043713 source:d:\santiago silveira\recursando-master\santiago_silveira_1f\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Clientes.h"
+

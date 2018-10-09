@@ -38,6 +38,34 @@ int isEmpty;
  */
 void abm_Menu();
 
+/** \brief Imprime el menu de opciones de juegos en pantalla
+ *
+ * \return void
+ *
+ */
+void abm_Menu_Juegos();
+
+/** \brief Imprime el menu de opciones de clientes en pantalla
+ *
+ * \return void
+ *
+ */
+void abm_Menu_Clientes();
+
+/** \brief Imprime el menu de opciones de alquileres en pantalla
+ *
+ * \return void
+ *
+ */
+void abm_Menu_Alquileres();
+
+/** \brief Imprime el menu de opciones de informacion extra en pantalla
+ *
+ * \return void
+ *
+ */
+void abm_Menu_Informes();
+
 /** \brief  Inicializa todas las listas
  *
  * \param eCliente cliente* Array de clientes
@@ -142,5 +170,24 @@ int abm_Alquiler_Alta(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int can
 int abm_ingresaAlquiler(alquileres* eAlquiler,int vacio,int cantidadA,juegos* eJuego,int cantidadJ,cliente* eCliente,int cantidadC);
 
 void abm_Alquiler_Listar(alquileres* eAlquiler,int cantidadA);
+
+
+void abm_Informe_ImportePyT(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA);
+
+void abm_Informe_PromedioYtotal(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA,float* total,float* promedio);
+
+void abm_Informe_JuegosDebajoDelPromedio(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA);
+
+void abm_Informe_BuscarClientePorJuego(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ,cliente* eCliente,int cantidadC);
+
+void abm_Informe_BuscarJuegoPorCliente(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ,cliente* eCliente,int cantidadC);
+
+void abm_Informe_JuegosMenosAlquilados(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ);
+
+void abm_Informe_ClientesConMasAlquileres(alquileres* eAlquiler,int cantidadA,cliente* eCliente,int cantidadC);
+
+void abm_Informe_BuscarJuegoPorFecha(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ);
+
+void abm_Informe_BuscarClientePorFecha(alquileres* eAlquiler,int cantidadA,cliente* eCliente,int cantidadC);
 
 #endif

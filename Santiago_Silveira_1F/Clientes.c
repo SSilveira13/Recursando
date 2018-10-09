@@ -6,19 +6,55 @@
 
 void abm_Menu()
 {
+    printf("****MENU****\n");
+    printf("1_JUEGOS.\n");
+    printf("2_CLIENTES.\n");
+    printf("3_ALQUILERES.\n");
+    printf("4_INFORMACION.\n\n");
+    printf("5_SALIR.\n");
+}
+
+void abm_Menu_Juegos()
+{
     printf("****JUEGOS****\n");
     printf("1_Alta.\n");
     printf("2_Modificacion.\n");
     printf("3_Baja.\n");
     printf("4_Listar.\n\n");
+    printf("5_Salir.\n");
+}
+
+void abm_Menu_Clientes()
+{
     printf("****CLIENTES****\n");
-    printf("5_Alta.\n");
-    printf("6_Modificacion.\n");
-    printf("7_Baja.\n");
-    printf("8_Listar.\n\n");
+    printf("1_Alta.\n");
+    printf("2_Modificacion.\n");
+    printf("3_Baja.\n");
+    printf("4_Listar.\n\n");
+    printf("5_Salir.\n");
+}
+
+void abm_Menu_Alquileres()
+{
     printf("****ALQUILERES****\n");
-    printf("9_Alta.\n");
-    printf("10_Listar.\n\n");
+    printf("1_Alta.\n");
+    printf("2_Listar.\n\n");
+    printf("3_Salir.\n");
+}
+
+void abm_Menu_Informes()
+{
+    printf("****INFORMACION EXTRA****\n");
+    printf("1_Promedio y total de importe en juegos alquilados.\n");
+    printf("2_Juegos que no superan el promedio de importe.\n");
+    printf("3_Buscar clientes que alquilaron un juego.\n");
+    printf("4_Buscar juegos que fueron alquilados por un cliente.\n");
+    printf("5_Juegos menos alquilados.\n");
+    printf("6_Clientes con mas alquileres.\n");
+    printf("7_Buscar juegos alquilados en una fecha.\n");
+    printf("8_Buscar clientes que alquilaron en una fecha.\n");
+    printf("9_Listar juegos por importe(descendente).\n");
+    printf("10_Listar clientes por apellidos(ascendente).\n\n");
     printf("11_Salir.\n");
 }
 
@@ -492,4 +528,271 @@ void abm_Alquiler_Listar(alquileres* eAlquiler,int cantidadA)
             printf("Fecha de alquiler: %d/%d/%d\n",eAlquiler[iteracion].eFecha.dia,eAlquiler[iteracion].eFecha.mes,eAlquiler[iteracion].eFecha.anio);
         }
     }
+}
+
+void abm_Informe_ImportePyT(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA)
+{
+    float promedio,total = 0;
+    abm_Informe_PromedioYtotal(eJuego,cantidadJ,eAlquiler,cantidadA,&total,&promedio);
+    system("cls");
+    printf("El importe total de los juegos alquilados es: %f\n",total);
+    printf("El promedio de los juegos alquilados es: %f",promedio);
+    system("pause");
+}
+
+void abm_Informe_PromedioYtotal(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA,float* total,float* promedio)
+{
+    int iteracion,auxiliar,contador;
+    for(iteracion=0;iteracion<cantidadA;iteracion++)
+    {
+        if(eAlquiler[iteracion].isEmpty == 0)
+        {
+            auxiliar = juego_buscarPorCodigo(eJuego,cantidadJ,eAlquiler[iteracion].codigoDeJuego);
+            *total = *total + eJuego[auxiliar].importe;
+            contador++;
+        }
+    }
+    *promedio = *total / contador;
+}
+
+void abm_Informe_JuegosDebajoDelPromedio(juegos* eJuego,int cantidadJ,alquileres* eAlquiler,int cantidadA)
+{
+    float promedio,total = 0;
+    int iteracion,contador;
+    abm_Informe_PromedioYtotal(eJuego,cantidadJ,eAlquiler,cantidadA,&total,&promedio);
+    for(iteracion=0;iteracion<cantidadJ;iteracion++)
+    {
+        if(eJuego[iteracion].isEmpty == 0 && eJuego[iteracion].importe < promedio)
+        {
+            contador++;
+        }
+    }
+    system("cls");
+    printf("La cantidad de juegos que no superan el importe promedio: %d",contador);
+    system("pause");
+}
+
+void abm_Informe_BuscarClientePorJuego(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ,cliente* eCliente,int cantidadC)
+{
+    int iteracion1,iteracion2,codigoAux;
+    system("cls");
+    abm_imprimirJuegos(eJuego,cantidadJ);
+    printf("\nIngrese el codigo del juego:");
+    fflush(stdin);
+    utn_getEntero(&codigoAux,"","Error",0,cantidadJ,0);
+    system("cls");
+    for(iteracion1=0;iteracion1<cantidadA;iteracion1++)
+    {
+        if(eAlquiler[iteracion1].isEmpty == 0 && eAlquiler[iteracion1].codigoDeJuego == codigoAux)
+        {
+            for(iteracion2=0;iteracion2<cantidadC;iteracion2++)
+            {
+                if(eCliente[iteracion2].isEmpty == 0 && eCliente[iteracion2].codigoDeCliente == eAlquiler[iteracion1].codigoDeCliente)
+                {
+                    printf("-------------------------------------------------------------------------------\n");
+                    printf("Codigo de cliente: %d\t",eCliente[iteracion2].codigoDeCliente);
+                    printf("Apellido: %s\t",eCliente[iteracion2].apellido);
+                    printf("Nombre: %s\n",eCliente[iteracion2].nombre);
+                    printf("Domicilio: %s\t",eCliente[iteracion2].domicilio);
+                    printf("Telefono: %s\n",eCliente[iteracion2].telefono);
+                }
+            }
+        }
+    }
+}
+
+void abm_Informe_BuscarJuegoPorCliente(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ,cliente* eCliente,int cantidadC)
+{
+    int iteracion1,iteracion2,codigoAux;
+    system("cls");
+    abm_imprimirClientes(eCliente,cantidadC);
+    printf("\nIngrese el codigo del cliente:");
+    fflush(stdin);
+    utn_getEntero(&codigoAux,"","Error",0,cantidadJ,0);
+    system("cls");
+    for(iteracion1=0;iteracion1<cantidadA;iteracion1++)
+    {
+        if(eAlquiler[iteracion1].isEmpty == 0 && eAlquiler[iteracion1].codigoDeCliente == codigoAux)
+        {
+            for(iteracion2=0;iteracion2<cantidadJ;iteracion2++)
+            {
+                if(eJuego[iteracion2].isEmpty == 0 && eJuego[iteracion2].codigoDeJuego == eAlquiler[iteracion1].codigoDeJuego)
+                {
+                    printf("-------------------------------------------------------------------------------\n");
+                    printf("Codigo de juego: %d\t",eJuego[iteracion2].codigoDeJuego);
+                    printf("Descripcion: %s\t",eJuego[iteracion2].descripcion);
+                    printf("Importe: %f\n",eJuego[iteracion2].importe);
+                }
+            }
+        }
+    }
+}
+
+void abm_Informe_JuegosMenosAlquilados(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ)
+{
+    int iteracion1,iteracion2,minimo,flag=0,contador,indice,contadorMin=0,iterMin,indiceMin[cantidadJ];
+    for(iteracion1=0;iteracion1<cantidadJ;iteracion1++)
+    {
+        if(eJuego[iteracion1].isEmpty == 0)
+        {
+            for(iteracion2=0;iteracion2<cantidadA;iteracion2++)
+            {
+                if(eAlquiler[iteracion2].isEmpty == 0 && eAlquiler[iteracion2].codigoDeJuego == eJuego[iteracion1].codigoDeJuego)
+                {
+                    contador++;
+                }
+            }
+            if(minimo>contador || flag == 0)
+            {
+
+                minimo = contador;
+                indice = iteracion1;
+                flag = 1;
+                contadorMin = 0;
+                for(iterMin=0;iterMin<cantidadJ;iterMin++)
+                {
+                    indiceMin[iterMin] = -1;
+                }
+            }
+            else if(minimo == contador)
+            {
+                iteracion1 = indiceMin[contadorMin];
+                contadorMin++;
+            }
+        }
+    }
+    system("cls");
+    printf("-------------------------Juegos menos alquilado--------------------------------\n");
+    printf("Codigo de juego: %d\t",eJuego[indice].codigoDeJuego);
+    printf("Descripcion: %s\t",eJuego[indice].descripcion);
+    printf("Importe: %f\n",eJuego[indice].importe);
+    for(iteracion1=0;iteracion1<contadorMin;iteracion1++)
+    {
+        indice = indiceMin[iteracion1];
+        printf("-------------------------------------------------------------------------------\n");
+        printf("Codigo de juego: %d\t",eJuego[indice].codigoDeJuego);
+        printf("Descripcion: %s\t",eJuego[indice].descripcion);
+        printf("Importe: %f\n",eJuego[indice].importe);
+    }
+    system("pause");
+}
+
+void abm_Informe_ClientesConMasAlquileres(alquileres* eAlquiler,int cantidadA,cliente* eCliente,int cantidadC)
+{
+    int iteracion1,iteracion2,minimo,flag=0,contador,indice,contadorMin=0,iterMin,indiceMin[cantidadC];
+    for(iteracion1=0;iteracion1<cantidadC;iteracion1++)
+    {
+        if(eCliente[iteracion1].isEmpty == 0)
+        {
+            for(iteracion2=0;iteracion2<cantidadA;iteracion2++)
+            {
+                if(eAlquiler[iteracion2].isEmpty == 0 && eAlquiler[iteracion2].codigoDeCliente == eCliente[iteracion1].codigoDeCliente)
+                {
+                    contador++;
+                }
+            }
+            if(minimo>contador || flag == 0)
+            {
+
+                minimo = contador;
+                indice = iteracion1;
+                flag = 1;
+                contadorMin = 0;
+                for(iterMin=0;iterMin<cantidadC;iterMin++)
+                {
+                    indiceMin[iterMin] = -1;
+                }
+            }
+            else if(minimo == contador)
+            {
+                iteracion1 = indiceMin[contadorMin];
+                contadorMin++;
+            }
+        }
+    }
+    system("cls");
+    printf("-------------------------Clientes que mas alquilan-----------------------------\n");
+    printf("Codigo de cliente: %d\t",eCliente[indice].codigoDeCliente);
+    printf("Apellido: %s\t",eCliente[indice].apellido);
+    printf("Nombre: %s\n",eCliente[indice].nombre);
+    printf("Domicilio: %s\t",eCliente[indice].domicilio);
+    printf("Telefono: %s\n",eCliente[indice].telefono);
+    for(iteracion1=0;iteracion1<contadorMin;iteracion1++)
+    {
+        indice = indiceMin[iteracion1];
+        printf("-------------------------------------------------------------------------------\n");
+        printf("Codigo de cliente: %d\t",eCliente[indice].codigoDeCliente);
+        printf("Apellido: %s\t",eCliente[indice].apellido);
+        printf("Nombre: %s\n",eCliente[indice].nombre);
+        printf("Domicilio: %s\t",eCliente[indice].domicilio);
+        printf("Telefono: %s\n",eCliente[indice].telefono);
+    }
+    system("pause");
+}
+
+void abm_Informe_BuscarJuegoPorFecha(alquileres* eAlquiler,int cantidadA,juegos* eJuego,int cantidadJ)
+{
+    int iteracion1,iteracion2,dia,mes,anio;
+    system("cls");
+    abm_Alquiler_Listar(eAlquiler,cantidadA);
+    printf("\nIngrese la fecha de alquiler:");
+    fflush(stdin);
+    utn_getEntero(&dia,"\nDia: ","Error",0,31,1);
+    fflush(stdin);
+    utn_getEntero(&mes,"\nMes: ","Error",0,12,1);
+    fflush(stdin);
+    utn_getEntero(&anio,"\nAnio: ","Error",2000,3000,1);
+    system("cls");
+    for(iteracion1=0;iteracion1<cantidadA;iteracion1++)
+    {
+        if(eAlquiler[iteracion1].isEmpty == 0 && eAlquiler[iteracion1].eFecha.dia == dia && eAlquiler[iteracion1].eFecha.mes == mes && eAlquiler[iteracion1].eFecha.anio == anio)
+        {
+            for(iteracion2=0;iteracion2<cantidadJ;iteracion2++)
+            {
+                if(eJuego[iteracion2].isEmpty == 0 && eJuego[iteracion2].codigoDeJuego == eAlquiler[iteracion1].codigoDeJuego)
+                {
+                    printf("-------------------------------------------------------------------------------\n");
+                    printf("Codigo de juego: %d\t",eJuego[iteracion2].codigoDeJuego);
+                    printf("Descripcion: %s\t",eJuego[iteracion2].descripcion);
+                    printf("Importe: %f\n",eJuego[iteracion2].importe);
+                }
+            }
+        }
+    }
+    printf("\n\nALQUILADOS EL %d/%d/%d.",dia,mes,anio);
+}
+
+void abm_Informe_BuscarClientePorFecha(alquileres* eAlquiler,int cantidadA,cliente* eCliente,int cantidadC)
+{
+    int iteracion1,iteracion2,dia,mes,anio;
+    system("cls");
+    abm_Alquiler_Listar(eAlquiler,cantidadA);
+    printf("\nIngrese la fecha del alquiler:");
+    fflush(stdin);
+    fflush(stdin);
+    utn_getEntero(&dia,"\nDia: ","Error",0,31,1);
+    fflush(stdin);
+    utn_getEntero(&mes,"\nMes: ","Error",0,12,1);
+    fflush(stdin);
+    utn_getEntero(&anio,"\nAnio: ","Error",2000,3000,1);
+    system("cls");
+    for(iteracion1=0;iteracion1<cantidadA;iteracion1++)
+    {
+        if(eAlquiler[iteracion1].isEmpty == 0 && eAlquiler[iteracion1].eFecha.dia == dia && eAlquiler[iteracion1].eFecha.mes == mes && eAlquiler[iteracion1].eFecha.anio == anio)
+        {
+            for(iteracion2=0;iteracion2<cantidadC;iteracion2++)
+            {
+                if(eCliente[iteracion2].isEmpty == 0 && eCliente[iteracion2].codigoDeCliente == eAlquiler[iteracion1].codigoDeCliente)
+                {
+                    printf("-------------------------------------------------------------------------------\n");
+                    printf("Codigo de cliente: %d\t",eCliente[iteracion2].codigoDeCliente);
+                    printf("Apellido: %s\t",eCliente[iteracion2].apellido);
+                    printf("Nombre: %s\n",eCliente[iteracion2].nombre);
+                    printf("Domicilio: %s\t",eCliente[iteracion2].domicilio);
+                    printf("Telefono: %s\n",eCliente[iteracion2].telefono);
+                }
+            }
+        }
+    }
+    printf("\n\nALQUILARON EL %d/%d/%d.",dia,mes,anio);
 }
