@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1540250202 source:d:\santiago silveira\clase_17\memoria_dinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1540249525 source:d:\santiago silveira\clase_17\memoria_dinamica\memoria_dinamica.c
+	<stdio.h>
+	<stdlib.h>
+
