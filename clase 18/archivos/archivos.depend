@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1540334936 source:d:\santiago silveira\clase_18\archivos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Archivos.c"
+
+1540333175 d:\santiago silveira\clase_18\archivos\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
