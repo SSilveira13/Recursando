@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "Person.h"
 #include "parser.h"
 
@@ -36,7 +37,7 @@ static void initialize(Persona* this,char* nombre,char* apellido,int id,int edad
     person_setAge(this,edad);
     person_setName(this,nombre);
     person_setLastName(this,apellido);
-    this->edad = edad;
+    person_setID(this,id);
 }
 
 /** \brief  Setea la edad de una persona recibida como parametro
@@ -48,7 +49,9 @@ static void initialize(Persona* this,char* nombre,char* apellido,int id,int edad
 void person_setAge(Persona* this, int age)
 {
     if(age > 0)
+    {
         this->edad = age;
+    }
 }
 
 /** \brief Obtiene la edad de una persona recibida como parametro
@@ -102,4 +105,36 @@ void person_getLastName(Persona* this,char* apellido)
     {
         strcpy(apellido,this->apellido);
     }
+}
+
+void person_setID(Persona* this,int id)
+{
+    if(id >= 0)
+    {
+        this->id = id;
+    }
+}
+
+int person_getID(Persona* this,int id)
+{
+    return this->id;
+}
+
+int person_validToDigit(char* digit)//TERMINAR
+{
+    int comparacion,iteracion = 0,numeros[20],multiplicador,numFinal=0,aux;
+    while(digit[iteracion]!="\0")
+    {
+        numeros[iteracion] = isdigit(digit[iteracion]);
+        iteracion++;
+    }
+    comparacion = iteracion;
+    while(iteracion>0)
+    {
+        aux = numeros[iteracion];
+        iteracion--;
+        multiplicador=comparacion-iteracion;
+        numFinal = numFinal + aux * multiplicador;
+    }
+    return numFinal;
 }

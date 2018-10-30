@@ -47,3 +47,27 @@
 	"Person.h"
 	"parser.h"
 
+1540938580 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Person.h"
+	"parser.h"
+
+1540941136 d:\santiago silveira\recursando-master\clase_19\people(con parser)\person.h
+
+1540862133 d:\santiago silveira\recursando-master\clase_19\people(con parser)\parser.h
+
+1540862133 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Person.h"
+	"parser.h"
+
+1540862133 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\person.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Person.h"
+	"parser.h"
+
