@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1540854886 source:d:\santiago silveira\clase_19\ejemplo_parser\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"parser.h"
+
+1540854726 d:\santiago silveira\clase_19\ejemplo_parser\parser.h
+
+1540856803 source:d:\santiago silveira\clase_19\ejemplo_parser\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"parser.h"
+
