@@ -51,6 +51,6 @@ void person_getLastName(Persona* this,char* apellido);
 
 void person_setID(Persona* this,int id);
 
-int person_getID(Persona* this,int id);
+int person_getID(Persona* this);
 
-int person_validToDigit(char* digit);
+//int person_validToDigit(char* digit);

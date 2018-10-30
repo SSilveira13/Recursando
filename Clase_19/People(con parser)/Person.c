@@ -115,12 +115,12 @@ void person_setID(Persona* this,int id)
     }
 }
 
-int person_getID(Persona* this,int id)
+int person_getID(Persona* this)
 {
     return this->id;
 }
 
-int person_validToDigit(char* digit)//TERMINAR
+/*int person_validToDigit(char* digit)//TERMINAR
 {
     int comparacion,iteracion = 0,numeros[20],multiplicador,numFinal=0,aux;
     while(digit[iteracion]!="\0")
@@ -137,4 +137,4 @@ int person_validToDigit(char* digit)//TERMINAR
         numFinal = numFinal + aux * multiplicador;
     }
     return numFinal;
-}
+}*/
