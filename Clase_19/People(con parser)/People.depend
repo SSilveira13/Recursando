@@ -32,15 +32,15 @@
 
 1540861305 d:\santiago silveira\clase_19\people(con parser)\person.h
 
-1540861485 source:d:\santiago silveira\clase_19\people(con parser)\main.c
+1540862033 source:d:\santiago silveira\clase_19\people(con parser)\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Person.h"
 	"parser.h"
 
-1540861478 d:\santiago silveira\clase_19\people(con parser)\parser.h
+1540861672 d:\santiago silveira\clase_19\people(con parser)\parser.h
 
-1540861465 source:d:\santiago silveira\clase_19\people(con parser)\parser.c
+1540861705 source:d:\santiago silveira\clase_19\people(con parser)\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

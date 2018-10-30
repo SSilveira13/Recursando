@@ -6,9 +6,13 @@
 
 int main()
 {
-    //void* personaArray[50];
-    //int arrayOcupadas=0,arrayTotal=0;
-
+    Persona* personaArray[50];
+    int arrayOcupadas=0,i;
+    parseData("datos.csv",personaArray,&arrayOcupadas);
+    for(i=0;i<arrayOcupadas;i++)
+    {
+        printf("Nombre: %s\n",personaArray[i]->nombre);
+    }
     return 0;
 }
 
