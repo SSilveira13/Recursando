@@ -43,11 +43,11 @@ void person_free(Persona* this);
 
 void person_setName(Persona* this,char* nombre);
 
-void person_getName(Persona* this,char *name);
+char* person_getName(Persona* this);
 
 void person_setLastName(Persona* this,char* apellido);
 
-void person_getLastName(Persona* this,char* apellido);
+char* person_getLastName(Persona* this);
 
 void person_setID(Persona* this,int id);
 

@@ -7,14 +7,11 @@
 int main()
 {
     Persona* personaArray[50];
-    char nombre[50],apellido[50];
     int arrayOcupadas=0,i;
     parseData("datos.csv",personaArray,&arrayOcupadas);
     for(i=0;i<arrayOcupadas;i++)
     {
-        person_getName(personaArray[i],nombre);
-        person_getLastName(personaArray[i],apellido);
-        printf("Nombre: %s\tApellido: %s\n",nombre,apellido);
+        printf("Nombre: %s\tApellido: %s\n",person_getName(personaArray[i]),person_getLastName(personaArray[i]));
         printf("ID: %d\t\tEdad: %d\n",person_getID(personaArray[i]),person_getAge(personaArray[i]));
         printf("-----------------------------------------\n");
     }
