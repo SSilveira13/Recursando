@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1476059796 source:/Users/Mauro/Documents/workspace_videos_c/People/main.c
+	<stdio.h>
+	<stdlib.h>
+	"People.h"
+
+1476059891 /Users/Mauro/Documents/workspace_videos_c/People/People.h
+
+1476059945 source:/Users/Mauro/Documents/workspace_videos_c/People/People.c
+	<stdlib.h>
+	"People.h"
+
+1476060823 source:/Users/Mauro/Documents/workspace_videos_c/Memoria_Dinamica/People/Person.c
+	<stdlib.h>
+	"Person.h"
+
+1476060823 /Users/Mauro/Documents/workspace_videos_c/Memoria_Dinamica/People/Person.h
+
+1540256806 source:d:\santiago silveira\clase_17\people\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Person.h"
+
+1540256847 d:\santiago silveira\clase_17\people\person.h
+
+1540860571 source:d:\santiago silveira\clase_19\people(con parser)\person.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Person.h"
+	"parser.h"
+
+1540861305 d:\santiago silveira\clase_19\people(con parser)\person.h
+
+1540862033 source:d:\santiago silveira\clase_19\people(con parser)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Person.h"
+	"parser.h"
+
+1540861672 d:\santiago silveira\clase_19\people(con parser)\parser.h
+
+1540861705 source:d:\santiago silveira\clase_19\people(con parser)\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Person.h"
+	"parser.h"
+
+1540944506 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Person.h"
+	"parser.h"
+
+1540944461 d:\santiago silveira\recursando-master\clase_19\people(con parser)\person.h
+
+1540862133 d:\santiago silveira\recursando-master\clase_19\people(con parser)\parser.h
+
+1540862133 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Person.h"
+	"parser.h"
+
+1540944468 source:d:\santiago silveira\recursando-master\clase_19\people(con parser)\person.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Person.h"
+	"parser.h"
+
