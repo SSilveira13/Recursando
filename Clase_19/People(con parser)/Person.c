@@ -132,3 +132,15 @@ int person_getID(Persona* this)
     }
     return numFinal;
 }*/
+
+Persona* person_newArray()
+{
+    Persona *puntero;
+    puntero = malloc(sizeof(Persona*)*10);
+    return puntero;
+}
+
+Persona* person_updateArray()
+{
+    return NULL;
+}

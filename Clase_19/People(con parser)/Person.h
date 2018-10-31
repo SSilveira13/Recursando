@@ -54,3 +54,7 @@ void person_setID(Persona* this,int id);
 int person_getID(Persona* this);
 
 //int person_validToDigit(char* digit);
+
+Persona* person_newArray();
+
+Persona* person_updateArray();
