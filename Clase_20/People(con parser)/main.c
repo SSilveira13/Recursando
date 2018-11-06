@@ -6,7 +6,8 @@
 
 int main()
 {
-    Persona* personaArray[50];
+    Persona** personLista;
+    int index,size;
     int arrayOcupadas=0,i;
     parseData("datos.csv",personaArray,&arrayOcupadas);
     for(i=0;i<arrayOcupadas;i++)
