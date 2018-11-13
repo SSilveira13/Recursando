@@ -33,23 +33,10 @@ LinkedList* ll_newLinkedList(void)
  */
 int ll_len(LinkedList* this)
 {
-    int contador = 0,returnAux = -1;
-    Node* nodo = NULL;
+    int returnAux = -1;
     if(this!=NULL)
     {
-        do
-        {
-            if(contador==0)
-            {
-                nodo = this->pFirstNode;
-            }
-            else
-            {
-                nodo = nodo->pNextNode;
-            }
-            contador++;
-        }while(nodo!=NULL);
-        returnAux = contador;
+        returnAux = this->size;
     }
     return returnAux;
 }
@@ -65,8 +52,22 @@ int ll_len(LinkedList* this)
  */
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
+    int index;
     Node* pNode = NULL;
-
+    if(this!=NULL && nodeIndex>=0 && nodeIndex<ll_len(this))
+    {
+        for(index=0;index<=nodeIndex;index++)
+        {
+            if(pNode==NULL)
+            {
+                pNode = this->pFirstNode;
+            }
+            else
+            {
+                pNode = pNode->pNextNode;
+            }
+        }
+    }
     return pNode;
 }
 
@@ -96,7 +97,44 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
+    Node* prev;
+    Node* next;
+    Node* nuevoNodo;
+    if( this != NULL)
+    {
+        if(nodeIndex >= 0 && nodeIndex <= ll_len(this))
+        {
+            nuevoNodo = (Node*)malloc(sizeof(Node));
+            if(nuevoNodo != NULL)
+            {
+                nuevoNodo->pElement = pElement;
+                nuevoNodo->pNextNode = NULL;
 
+                if(nodeIndex == 0)
+                {
+                    nuevoNodo->pNextNode = this->pFirstNode;
+                    this->pFirstNode = nuevoNodo;
+                }
+                else
+                {
+                    prev = this->pFirstNode;
+                    next = prev->pNextNode;
+
+                    while( nodeIndex > 1)
+                    {
+                        prev  = next;
+                        next  = prev->pNextNode;
+                        nodeIndex--;
+                    }
+
+                    prev->pNextNode = nuevoNodo;
+                    nuevoNodo->pNextNode = next;
+                }
+                this->size++;
+                returnAux = 0;
+            }
+        }
+    }
     return returnAux;
 }
 
