@@ -373,14 +373,18 @@ int ll_isEmpty(LinkedList* this)
 int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
-    if(this!=NULL && pElement!=NULL && index>=0 && index<ll_len(this))
+    if(this!=NULL)
     {
-        addNode(this,index,pElement);
-        returnAux = 0;
+        if(index>=0 && index<=ll_len(this))
+        {
+           if(!addNode(this,index,pElement))
+            {
+                returnAux = 0;
+            }
+        }
     }
     return returnAux;
 }
-
 
 /** \brief Elimina el elemento de la posicion indicada y retorna su puntero
  *
