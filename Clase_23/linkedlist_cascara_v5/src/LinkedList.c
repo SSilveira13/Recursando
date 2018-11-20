@@ -479,7 +479,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
                 }
             }
         }
-        if(contador==this2->size)
+        if(contador==ll_len(this2))
         {
             returnAux = 1;
         }
@@ -500,25 +500,24 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
-    LinkedList* aux = NULL;
-    int index,contador = 0;
-    void* auxiliar;
-    if(this!=NULL && from<=0 && to<=0 && from<ll_len(this) && to<ll_len(this))
+    LinkedList* auxiliar = NULL;
+    int index;
+    void* elemento = NULL;
+    if(this!=NULL && from<=0 && to<0 && from<ll_len(this) && to<=ll_len(this))
     {
-        aux = ll_newLinkedList();
-        if(aux!=NULL)
+        auxiliar = ll_newLinkedList();
+        if(auxiliar!=NULL)
         {
-            cloneArray = aux;
-            for(index=from;index<=to;index++)
+            for(index=from;index<to;index++)
             {
-                auxiliar = ll_get(this,index);
-                if(auxiliar!=NULL)
+                elemento = ll_get(this,index);
+                if(elemento!=NULL)
                 {
-                    ll_set(aux,contador,auxiliar);
-                    contador++;
+                    ll_add(auxiliar,elemento);
                 }
             }
         }
+        cloneArray = auxiliar;
     }
     return cloneArray;
 }
@@ -534,7 +533,25 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
-
+    LinkedList* auxiliar = NULL;
+    int index;
+    void* elemento = NULL;
+    if(this!=NULL)
+    {
+        auxiliar = ll_newLinkedList();
+        if(auxiliar!=NULL)
+        {
+            for(index=0;index<=ll_len(this);index++)
+            {
+                elemento = ll_get(this,index);
+                if(elemento!=NULL)
+                {
+                    ll_add(auxiliar,elemento);
+                }
+            }
+        }
+        cloneArray = auxiliar;
+    }
     return cloneArray;
 }
 
