@@ -397,7 +397,23 @@ int ll_push(LinkedList* this, int index, void* pElement)
 void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
-
+    void* aux = NULL;
+    if(this!=NULL && index>=0 && index<ll_len(this))
+    {
+        aux = ll_get(this,index);
+        if(aux!=NULL)
+        {
+            if(index==0)
+            {
+                ll_remove(this,index);
+            }
+            else
+            {
+                ll_remove(this,index);
+            }
+            returnAux = aux;
+        }
+    }
     return returnAux;
 }
 
@@ -413,7 +429,24 @@ void* ll_pop(LinkedList* this,int index)
 int ll_contains(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
-
+    int index;
+    void* aux;
+    if(this!=NULL)
+    {
+        returnAux = 0;
+        for(index=0;index<=ll_len(this);index++)
+        {
+            aux = ll_get(this,index);
+            if(aux!=NULL)
+            {
+               if(pElement == aux)
+                {
+                    returnAux = 1;
+                    break;
+                }
+            }
+        }
+    }
     return returnAux;
 }
 
@@ -429,7 +462,28 @@ int ll_contains(LinkedList* this, void* pElement)
 int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
     int returnAux = -1;
-
+    int index;
+    int contador = 0;
+    void* aux;
+    if(this!=NULL && this2!=NULL)
+    {
+        returnAux = 0;
+        for(index=0;index<=ll_len(this2);index++)
+        {
+            aux = ll_get(this2,index);
+            if(aux!=NULL)
+            {
+                if(ll_contains(this,aux))
+                {
+                    contador++;
+                }
+            }
+        }
+        if(contador==this2->size)
+        {
+            returnAux = 1;
+        }
+    }
     return returnAux;
 }
 
@@ -446,7 +500,26 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
-
+    LinkedList* aux = NULL;
+    int index,contador = 0;
+    void* auxiliar;
+    if(this!=NULL && from<=0 && to<=0 && from<ll_len(this) && to<ll_len(this))
+    {
+        aux = ll_newLinkedList();
+        if(aux!=NULL)
+        {
+            cloneArray = aux;
+            for(index=from;index<=to;index++)
+            {
+                auxiliar = ll_get(this,index);
+                if(auxiliar!=NULL)
+                {
+                    ll_set(aux,contador,auxiliar);
+                    contador++;
+                }
+            }
+        }
+    }
     return cloneArray;
 }
 
