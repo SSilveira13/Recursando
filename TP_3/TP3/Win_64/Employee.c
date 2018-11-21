@@ -1,8 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+
+Employee* employee_new()
+{
+    Employee* retorno;
+    retorno = malloc(sizeof(Employee));
+    return retorno;
+}
 
 Employee* employee_newParametros(Employee* this,char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {

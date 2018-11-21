@@ -13,6 +13,10 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
+    if(path!=NULL && pArrayListEmployee!=NULL)
+    {
+        parser_EmployeeFromText(path,pArrayListEmployee);
+    }
     return 1;
 }
 
