@@ -1,0 +1,128 @@
+# depslib dependency file v1.0
+1543800228 source:c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1542739460 c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\linkedlist.h
+
+1542739460 c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\controller.h
+
+1543799942 c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\employee.h
+
+1543842883 source:c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1543842528 source:c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543842706 source:c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1542739460 c:\users\santiago\desktop\estudio\tp_3\tp3\win_64\parser.h
+
+1543877825 source:c:\users\alumno\downloads\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1542739460 c:\users\alumno\downloads\tp3\win_64\linkedlist.h
+
+1543799942 c:\users\alumno\downloads\tp3\win_64\employee.h
+
+1542739460 c:\users\alumno\downloads\tp3\win_64\parser.h
+
+1543800228 source:c:\users\alumno\downloads\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1542739460 c:\users\alumno\downloads\tp3\win_64\controller.h
+
+1543842883 source:c:\users\alumno\downloads\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1543877825 source:c:\users\alumno\downloads\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543843342 c:\users\alumno\downloads\tp3\win_64\utn.h
+
+1543876812 source:c:\users\alumno\downloads\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1543941533 source:c:\users\santiago\desktop\estudio\tp3 v2\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1542739460 c:\users\santiago\desktop\estudio\tp3 v2\win_64\linkedlist.h
+
+1542739460 c:\users\santiago\desktop\estudio\tp3 v2\win_64\controller.h
+
+1543799942 c:\users\santiago\desktop\estudio\tp3 v2\win_64\employee.h
+
+1543941369 source:c:\users\santiago\desktop\estudio\tp3 v2\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1543941329 source:c:\users\santiago\desktop\estudio\tp3 v2\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1542739460 c:\users\santiago\desktop\estudio\tp3 v2\win_64\parser.h
+
+1543843342 c:\users\santiago\desktop\estudio\tp3 v2\win_64\utn.h
+
+1543941176 source:c:\users\santiago\desktop\estudio\tp3 v2\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1543876812 source:c:\users\santiago\desktop\estudio\tp3 v2\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
