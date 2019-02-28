@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1550787643 source:d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Socios.h"
+
+1544742890 d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\linkedlist.h
+
+1550790730 d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\socios.h
+
+1550791771 source:d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"parser.h"
+	"utn.h"
+	"Socios.h"
+
+1550790771 d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\parser.h
+
+1544125698 d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\utn.h
+
+1550789449 source:d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Socios.h"
+
+1544125696 source:d:\silveirasantiago\santiago_silveira_final\final_21_02_2019\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1551209591 source:c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Socios.h"
+	"utn.h"
+
+1544742890 c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\linkedlist.h
+
+1551355342 c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\socios.h
+
+1544125698 c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\utn.h
+
+1550789449 source:c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Socios.h"
+
+1544125696 source:c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1550787643 source:c:\users\santiago\desktop\recursando-master\santiago_silveira_final\final_21_02_2019\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Socios.h"
+
